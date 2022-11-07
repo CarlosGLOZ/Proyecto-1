@@ -5,6 +5,11 @@ require_once 'func.php';
 // Validar entrada
 if (!isset($_POST[LOGIN_FORM['SEND']])) {
     redirect('../view/login.php');
+    // foreach ($_POST as $key => $value) {
+    //     echo "[$key] -> [$value]<br>";
+    // }
+    // echo "sfd";
+    // die();
 }
 
 // Recoger y encriptar datos de POST, guardarlos en array $params
@@ -18,15 +23,15 @@ foreach ($_POST as $key => $value) {
 }
 
 // Validar datos con la BDD
-$sql = "SELECT * FROM ".BD['EMPLEADO']['TABLA']." WHERE ".BD['EMPLEADO']['NOMBRE']." = ".$params[LOGIN_FORM['USER']].";";
+$sql = "SELECT * FROM ".BD['EMPLEADO']['TABLA']." WHERE ".BD['EMPLEADO']['NOMBRE']." = '".$params[LOGIN_FORM['USER']]."';";
 
-echo $sql;
-die();
+// echo $sql;
+// die();
 
 $result = mysqli_fetch_assoc(mysqli_query($conexion, $sql));
 
-if ($params[BD['EMPLEADO']['NOMBRE']] != $result[BD['EMPLEADO']['PASSWORD']]) {
-    redirect('../view/login.php?val=false');
+if ($params[BD['EMPLEADO']['PASSWORD']] != $result[BD['EMPLEADO']['PASSWORD']]) {
+    redirect('../controller/login_controller.php?val=false');
 }
 
 // Iniciar sesión
