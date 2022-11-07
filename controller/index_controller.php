@@ -2,6 +2,7 @@
 
 require_once '../config/conexion.php';
 require_once '../proc/func.php';
+require_once '../models/mesa.php';
 
 // Validar sesion
 if (!validar_sesion()) {
@@ -12,21 +13,11 @@ if (!validar_sesion()) {
 $filtros = [];
 foreach ($_GET as $key => $value) {
     if (in_array(explode('_',$key)[0], FILTROS)) { //comprobar que variable esté dentro de los filtros
-        $filtros[$key] = mysql_real_escape_string(trim(strip_tags($value)));
+        $filtros[$key] = mysqli_real_escape_string(trim(strip_tags($value)));
     }
 }
 
-// Recoger todas las mesas
-$sql = "SELECT * FROM ".BD['MESA']['TABLA']." WHERE 1=1";
-
-// aplicar filtros
-foreach ($filtros as $key => $value) {
-    $sql = $sql." AND ".FILTROS['BD'][$key]." = $VALUE";
-}
-
-$sql = $sql.";";
-
-$mesas = mysqli_query($conexion, $sql);
+$mesas = Mesa::getMesas($conexion, $filtros);
 
 // foreach ($mesas as $mesa) {
 //     $mesa[BD['MESA']['ID']];
