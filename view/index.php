@@ -19,6 +19,7 @@
         foreach ($mesa as $key => $value) {
             echo "[$key] -> [$value]<br>";
         }
+        ?> <button type="button">ocupar</button> <?php
     }
 ?>    
 </body>
