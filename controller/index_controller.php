@@ -1,6 +1,13 @@
 <?php
 
 require_once '../config/conexion.php';
+require_once '../proc/func.php';
+require_once '../models/mesa.php';
+
+// Validar sesion
+if (!validar_sesion()) {
+    // redirect('login_controller.php?val=false');
+}
 
 // Recoger filtros
 $filtros = [];
@@ -10,19 +17,13 @@ foreach ($_GET as $key => $value) {
     }
 }
 
-// Recoger todas las mesas
-$sql = "SELECT * FROM ".BD['MESA']['TABLA']." WHERE 1=1";
+$mesas = Mesa::getMesas($conexion, $filtros);
 
-// aplicar filtros
-foreach ($filtros as $key => $value) {
-    $sql = $sql." AND ".FILTROS['BD'][$key]." = $VALUE";
-
-}
-
-$sql = $sql.";";
-
-$mesas = mysqli_query($conexion, $sql);
+// foreach ($mesas as $mesa) {
+//     $mesa[BD['MESA']['ID']];
+// }
 
 // Llamar a pagina
-$entrada_valida= true;
+$entrada_valida = true;
+
 require_once '../view/index.php';

@@ -50,7 +50,7 @@ if (!$entrada_valida) {
                     </div>
                     <!-- <a href="#"> Not registered? Create an account</a> -->
 
-                    <button onclick="return validaFormulario()" name="button" class="button-form" name="insesion" type="submit" value=<?php echo LOGIN_FORM['SEND'];?>>Login</button>
+                    <button name="button" class="button-form" type="submit">Login</button>
                     </form>  
                     <!-- <button class="button-volver" onclick="window.location.href='./index.php'">Volver</button>            -->
                 </div>
