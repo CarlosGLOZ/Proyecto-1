@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Temps de generació: 07-10-2022 a les 17:52:55
--- Versió del servidor: 10.4.24-MariaDB
--- Versió de PHP: 7.4.29
+-- Tiempo de generación: 07-11-2022 a las 18:16:54
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,602 +18,239 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de dades: `bd_crud`
+-- Base de datos: `bd_restaurante`
 --
-CREATE DATABASE IF NOT EXISTS `bd_crud` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `bd_crud`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `tbl_alumno`
+-- Estructura de tabla para la tabla `tbl_cargo`
 --
 
-CREATE TABLE `tbl_alumno` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(20) NOT NULL,
-  `edad` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Bolcament de dades per a la taula `tbl_alumno`
---
-
-INSERT INTO `tbl_alumno` (`id`, `nombre`, `edad`) VALUES
-(19, 'sergi', 22),
-(20, 'sergio', 70);
-
---
--- Índexs per a les taules bolcades
---
-
---
--- Índexs per a la taula `tbl_alumno`
---
-ALTER TABLE `tbl_alumno`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT per les taules bolcades
---
-
---
--- AUTO_INCREMENT per la taula `tbl_alumno`
---
-ALTER TABLE `tbl_alumno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
---
--- Base de dades: `bd_estudiante`
---
-CREATE DATABASE IF NOT EXISTS `bd_estudiante` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `bd_estudiante`;
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `tbl_alumnos`
---
-
-CREATE TABLE `tbl_alumnos` (
-  `id` int(3) NOT NULL,
-  `nombre` varchar(40) NOT NULL,
-  `apellido` varchar(40) NOT NULL,
-  `email` varchar(60) NOT NULL,
-  `nie` int(20) NOT NULL,
-  `telefono` int(9) NOT NULL,
-  `edad` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Índexs per a les taules bolcades
---
-
---
--- Índexs per a la taula `tbl_alumnos`
---
-ALTER TABLE `tbl_alumnos`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT per les taules bolcades
---
-
---
--- AUTO_INCREMENT per la taula `tbl_alumnos`
---
-ALTER TABLE `tbl_alumnos`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
---
--- Base de dades: `bd_notas`
---
-CREATE DATABASE IF NOT EXISTS `bd_notas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `bd_notas`;
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `tbl_gestornotas`
---
-
-CREATE TABLE `tbl_gestornotas` (
-  `id` int(11) NOT NULL,
-  `user` varchar(30) NOT NULL,
-  `password` varchar(256) NOT NULL
+CREATE TABLE `tbl_cargo` (
+  `id_cargo` int(11) NOT NULL,
+  `nom_cargo` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `tbl_gestornotas`
+-- Volcado de datos para la tabla `tbl_cargo`
 --
 
-INSERT INTO `tbl_gestornotas` (`id`, `user`, `password`) VALUES
-(1, 'sergi@gmail.com', '00Zn754n'),
-(2, 'uiliam@gmail.com', 'Uiliam1234'),
-(3, 'pablo@gmail.com', 'Pablo1234'),
-(4, 'fabri@gmail.com', 'Fabri1234');
-
---
--- Índexs per a les taules bolcades
---
-
---
--- Índexs per a la taula `tbl_gestornotas`
---
-ALTER TABLE `tbl_gestornotas`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT per les taules bolcades
---
-
---
--- AUTO_INCREMENT per la taula `tbl_gestornotas`
---
-ALTER TABLE `tbl_gestornotas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- Base de dades: `phpmyadmin`
---
-CREATE DATABASE IF NOT EXISTS `phpmyadmin` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `phpmyadmin`;
+INSERT INTO `tbl_cargo` (`id_cargo`, `nom_cargo`) VALUES
+(1, 'Camarero'),
+(2, 'Mantenimiento');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `pma__bookmark`
+-- Estructura de tabla para la tabla `tbl_empleado`
 --
 
-CREATE TABLE `pma__bookmark` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `dbase` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `user` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `label` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `query` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Bookmarks';
-
--- --------------------------------------------------------
+CREATE TABLE `tbl_empleado` (
+  `id_empleado` int(11) NOT NULL,
+  `nom_empleado` varchar(20) NOT NULL,
+  `ape_empleado` varchar(20) NOT NULL,
+  `dni_empleado` varchar(9) NOT NULL,
+  `fk_cargo_empleado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Estructura de la taula `pma__central_columns`
+-- Volcado de datos para la tabla `tbl_empleado`
 --
 
-CREATE TABLE `pma__central_columns` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_type` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_length` text COLLATE utf8_bin DEFAULT NULL,
-  `col_collation` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_isNull` tinyint(1) NOT NULL,
-  `col_extra` varchar(255) COLLATE utf8_bin DEFAULT '',
-  `col_default` text COLLATE utf8_bin DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Central list of columns';
+INSERT INTO `tbl_empleado` (`id_empleado`, `nom_empleado`, `ape_empleado`, `dni_empleado`, `fk_cargo_empleado`) VALUES
+(7, 'Sergi', 'Garcia', '47864649Q', 1),
+(9, 'Carlos', 'Piedras', '47864650V', 1),
+(10, 'Alejandro', 'Lay', '46785678F', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `pma__column_info`
+-- Estructura de tabla para la tabla `tbl_incidencia`
 --
 
-CREATE TABLE `pma__column_info` (
-  `id` int(5) UNSIGNED NOT NULL,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `column_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `comment` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `mimetype` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `transformation` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `transformation_options` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `input_transformation` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `input_transformation_options` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Column information for phpMyAdmin';
+CREATE TABLE `tbl_incidencia` (
+  `id_inc` int(11) NOT NULL,
+  `nom_inc` varchar(200) NOT NULL,
+  `estado_inc` tinyint(1) NOT NULL,
+  `fk_mesa_inc` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `pma__designer_settings`
+-- Estructura de tabla para la tabla `tbl_mesa`
 --
 
-CREATE TABLE `pma__designer_settings` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `settings_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Settings related to Designer';
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__export_templates`
---
-
-CREATE TABLE `pma__export_templates` (
-  `id` int(5) UNSIGNED NOT NULL,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `export_type` varchar(10) COLLATE utf8_bin NOT NULL,
-  `template_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `template_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved export templates';
+CREATE TABLE `tbl_mesa` (
+  `id_mesa` int(11) NOT NULL,
+  `num_mesa` int(2) NOT NULL,
+  `estado_mesa` enum('0','1','2') NOT NULL,
+  `fk_num_sala` int(11) DEFAULT NULL,
+  `capacidad_mesa` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `pma__export_templates`
+-- Volcado de datos para la tabla `tbl_mesa`
 --
 
-INSERT INTO `pma__export_templates` (`id`, `username`, `export_type`, `template_name`, `template_data`) VALUES
-(1, 'root', 'table', 'test', '{\"quick_or_custom\":\"quick\",\"what\":\"sql\",\"allrows\":\"1\",\"aliases_new\":\"\",\"output_format\":\"sendit\",\"filename_template\":\"@TABLE@\",\"remember_template\":\"on\",\"charset\":\"utf-8\",\"compression\":\"none\",\"maxsize\":\"\",\"codegen_structure_or_data\":\"data\",\"codegen_format\":\"0\",\"csv_separator\":\",\",\"csv_enclosed\":\"\\\"\",\"csv_escaped\":\"\\\"\",\"csv_terminated\":\"AUTO\",\"csv_null\":\"NULL\",\"csv_structure_or_data\":\"data\",\"excel_null\":\"NULL\",\"excel_columns\":\"something\",\"excel_edition\":\"win\",\"excel_structure_or_data\":\"data\",\"json_structure_or_data\":\"data\",\"json_unicode\":\"something\",\"latex_caption\":\"something\",\"latex_structure_or_data\":\"structure_and_data\",\"latex_structure_caption\":\"Estructura de la taula @TABLE@\",\"latex_structure_continued_caption\":\"Estructura de la taula @TABLE@ (continua)\",\"latex_structure_label\":\"tab:@TABLE@-structure\",\"latex_relation\":\"something\",\"latex_comments\":\"something\",\"latex_mime\":\"something\",\"latex_columns\":\"something\",\"latex_data_caption\":\"Contingut de la taula @TABLE@\",\"latex_data_continued_caption\":\"Contingut de la taula @TABLE@ (continua)\",\"latex_data_label\":\"tab:@TABLE@-data\",\"latex_null\":\"\\\\textit{NULL}\",\"mediawiki_structure_or_data\":\"data\",\"mediawiki_caption\":\"something\",\"mediawiki_headers\":\"something\",\"htmlword_structure_or_data\":\"structure_and_data\",\"htmlword_null\":\"NULL\",\"ods_null\":\"NULL\",\"ods_structure_or_data\":\"data\",\"odt_structure_or_data\":\"structure_and_data\",\"odt_relation\":\"something\",\"odt_comments\":\"something\",\"odt_mime\":\"something\",\"odt_columns\":\"something\",\"odt_null\":\"NULL\",\"pdf_report_title\":\"\",\"pdf_structure_or_data\":\"data\",\"phparray_structure_or_data\":\"data\",\"sql_include_comments\":\"something\",\"sql_header_comment\":\"\",\"sql_use_transaction\":\"something\",\"sql_compatibility\":\"NONE\",\"sql_structure_or_data\":\"structure_and_data\",\"sql_create_table\":\"something\",\"sql_auto_increment\":\"something\",\"sql_create_view\":\"something\",\"sql_create_trigger\":\"something\",\"sql_backquotes\":\"something\",\"sql_type\":\"INSERT\",\"sql_insert_syntax\":\"both\",\"sql_max_query_size\":\"50000\",\"sql_hex_for_binary\":\"something\",\"sql_utc_time\":\"something\",\"texytext_structure_or_data\":\"structure_and_data\",\"texytext_null\":\"NULL\",\"xml_structure_or_data\":\"data\",\"xml_export_events\":\"something\",\"xml_export_functions\":\"something\",\"xml_export_procedures\":\"something\",\"xml_export_tables\":\"something\",\"xml_export_triggers\":\"something\",\"xml_export_views\":\"something\",\"xml_export_contents\":\"something\",\"yaml_structure_or_data\":\"data\",\"\":null,\"lock_tables\":null,\"csv_removeCRLF\":null,\"csv_columns\":null,\"excel_removeCRLF\":null,\"json_pretty_print\":null,\"htmlword_columns\":null,\"ods_columns\":null,\"sql_dates\":null,\"sql_relation\":null,\"sql_mime\":null,\"sql_disable_fk\":null,\"sql_views_as_tables\":null,\"sql_metadata\":null,\"sql_drop_table\":null,\"sql_if_not_exists\":null,\"sql_simple_view_export\":null,\"sql_view_current_user\":null,\"sql_or_replace_view\":null,\"sql_procedure_function\":null,\"sql_truncate\":null,\"sql_delayed\":null,\"sql_ignore\":null,\"texytext_columns\":null}');
+INSERT INTO `tbl_mesa` (`id_mesa`, `num_mesa`, `estado_mesa`, `fk_num_sala`, `capacidad_mesa`) VALUES
+(1, 1, '0', 1, 4),
+(2, 2, '0', 1, 4),
+(3, 3, '0', 1, 6),
+(4, 4, '0', 2, 4),
+(5, 5, '1', 2, 8),
+(6, 10, '1', 3, 10),
+(7, 11, '0', 1, 8);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `pma__favorite`
+-- Estructura de tabla para la tabla `tbl_registro`
 --
 
-CREATE TABLE `pma__favorite` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `tables` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Favorite tables';
-
--- --------------------------------------------------------
+CREATE TABLE `tbl_registro` (
+  `id_registro` int(11) NOT NULL,
+  `fecha_entrada` datetime NOT NULL,
+  `fecha_salida` datetime DEFAULT NULL,
+  `id_mesa` int(11) NOT NULL,
+  `id_camarero` int(11) NOT NULL,
+  `num_comensales` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Estructura de la taula `pma__history`
+-- Volcado de datos para la tabla `tbl_registro`
 --
 
-CREATE TABLE `pma__history` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `timevalue` timestamp NOT NULL DEFAULT current_timestamp(),
-  `sqlquery` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='SQL history for phpMyAdmin';
+INSERT INTO `tbl_registro` (`id_registro`, `fecha_entrada`, `fecha_salida`, `id_mesa`, `id_camarero`, `num_comensales`) VALUES
+(1, '2022-11-07 14:00:00', '2022-11-07 15:05:00', 1, 10, 4);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `pma__navigationhiding`
+-- Estructura de tabla para la tabla `tbl_sala`
 --
 
-CREATE TABLE `pma__navigationhiding` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `item_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `item_type` varchar(64) COLLATE utf8_bin NOT NULL,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Hidden items of navigation tree';
+CREATE TABLE `tbl_sala` (
+  `id_sala` int(11) NOT NULL,
+  `nom_sala` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__pdf_pages`
---
-
-CREATE TABLE `pma__pdf_pages` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `page_nr` int(10) UNSIGNED NOT NULL,
-  `page_descr` varchar(50) CHARACTER SET utf8 NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='PDF relation pages for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__recent`
---
-
-CREATE TABLE `pma__recent` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `tables` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Recently accessed tables';
-
---
--- Bolcament de dades per a la taula `pma__recent`
---
-
-INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"bd_notas\",\"table\":\"tbl_gestornotas\"},{\"db\":\"bd_notas\",\"table\":\"tbl_gestorNotas\"},{\"db\":\"bd_crud\",\"table\":\"tbl_alumno\"},{\"db\":\"bd_estudiante\",\"table\":\"tbl_alumnos\"}]');
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__relation`
---
-
-CREATE TABLE `pma__relation` (
-  `master_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `master_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `master_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__savedsearches`
---
-
-CREATE TABLE `pma__savedsearches` (
-  `id` int(5) UNSIGNED NOT NULL,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `search_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `search_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved searches';
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__table_coords`
---
-
-CREATE TABLE `pma__table_coords` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `pdf_page_number` int(11) NOT NULL DEFAULT 0,
-  `x` float UNSIGNED NOT NULL DEFAULT 0,
-  `y` float UNSIGNED NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for phpMyAdmin PDF output';
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__table_info`
---
-
-CREATE TABLE `pma__table_info` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `display_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table information for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__table_uiprefs`
---
-
-CREATE TABLE `pma__table_uiprefs` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `prefs` text COLLATE utf8_bin NOT NULL,
-  `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__tracking`
---
-
-CREATE TABLE `pma__tracking` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `version` int(10) UNSIGNED NOT NULL,
-  `date_created` datetime NOT NULL,
-  `date_updated` datetime NOT NULL,
-  `schema_snapshot` text COLLATE utf8_bin NOT NULL,
-  `schema_sql` text COLLATE utf8_bin DEFAULT NULL,
-  `data_sql` longtext COLLATE utf8_bin DEFAULT NULL,
-  `tracking` set('UPDATE','REPLACE','INSERT','DELETE','TRUNCATE','CREATE DATABASE','ALTER DATABASE','DROP DATABASE','CREATE TABLE','ALTER TABLE','RENAME TABLE','DROP TABLE','CREATE INDEX','DROP INDEX','CREATE VIEW','ALTER VIEW','DROP VIEW') COLLATE utf8_bin DEFAULT NULL,
-  `tracking_active` int(1) UNSIGNED NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Database changes tracking for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__userconfig`
 --
-
-CREATE TABLE `pma__userconfig` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `timevalue` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `config_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User preferences storage for phpMyAdmin';
-
---
--- Bolcament de dades per a la taula `pma__userconfig`
---
-
-INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2022-10-07 15:52:48', '{\"Console\\/Mode\":\"collapse\",\"lang\":\"ca\"}');
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__usergroups`
---
-
-CREATE TABLE `pma__usergroups` (
-  `usergroup` varchar(64) COLLATE utf8_bin NOT NULL,
-  `tab` varchar(64) COLLATE utf8_bin NOT NULL,
-  `allowed` enum('Y','N') COLLATE utf8_bin NOT NULL DEFAULT 'N'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User groups with configured menu items';
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `pma__users`
---
-
-CREATE TABLE `pma__users` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `usergroup` varchar(64) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Users and their assignments to user groups';
-
---
--- Bolcament de dades per a la taula `pma__users`
---
-
-INSERT INTO `pma__users` (`username`, `usergroup`) VALUES
-('Fabrizio', ''),
-('Uiliam', '');
-
---
--- Índexs per a les taules bolcades
---
-
+-- Volcado de datos para la tabla `tbl_sala`
 --
--- Índexs per a la taula `pma__bookmark`
---
-ALTER TABLE `pma__bookmark`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índexs per a la taula `pma__central_columns`
---
-ALTER TABLE `pma__central_columns`
-  ADD PRIMARY KEY (`db_name`,`col_name`);
-
---
--- Índexs per a la taula `pma__column_info`
---
-ALTER TABLE `pma__column_info`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`);
-
---
--- Índexs per a la taula `pma__designer_settings`
---
-ALTER TABLE `pma__designer_settings`
-  ADD PRIMARY KEY (`username`);
-
---
--- Índexs per a la taula `pma__export_templates`
---
-ALTER TABLE `pma__export_templates`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `u_user_type_template` (`username`,`export_type`,`template_name`);
-
---
--- Índexs per a la taula `pma__favorite`
---
-ALTER TABLE `pma__favorite`
-  ADD PRIMARY KEY (`username`);
-
---
--- Índexs per a la taula `pma__history`
---
-ALTER TABLE `pma__history`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `username` (`username`,`db`,`table`,`timevalue`);
 
---
--- Índexs per a la taula `pma__navigationhiding`
---
-ALTER TABLE `pma__navigationhiding`
-  ADD PRIMARY KEY (`username`,`item_name`,`item_type`,`db_name`,`table_name`);
+INSERT INTO `tbl_sala` (`id_sala`, `nom_sala`) VALUES
+(1, 'Principal - 1'),
+(2, 'Comedor - 2'),
+(3, 'Privada - 3');
 
 --
--- Índexs per a la taula `pma__pdf_pages`
+-- Índices para tablas volcadas
 --
-ALTER TABLE `pma__pdf_pages`
-  ADD PRIMARY KEY (`page_nr`),
-  ADD KEY `db_name` (`db_name`);
 
 --
--- Índexs per a la taula `pma__recent`
+-- Indices de la tabla `tbl_cargo`
 --
-ALTER TABLE `pma__recent`
-  ADD PRIMARY KEY (`username`);
+ALTER TABLE `tbl_cargo`
+  ADD PRIMARY KEY (`id_cargo`);
 
 --
--- Índexs per a la taula `pma__relation`
+-- Indices de la tabla `tbl_empleado`
 --
-ALTER TABLE `pma__relation`
-  ADD PRIMARY KEY (`master_db`,`master_table`,`master_field`),
-  ADD KEY `foreign_field` (`foreign_db`,`foreign_table`);
+ALTER TABLE `tbl_empleado`
+  ADD PRIMARY KEY (`id_empleado`),
+  ADD KEY `fk_cargo_empleado` (`fk_cargo_empleado`);
 
 --
--- Índexs per a la taula `pma__savedsearches`
+-- Indices de la tabla `tbl_incidencia`
 --
-ALTER TABLE `pma__savedsearches`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `u_savedsearches_username_dbname` (`username`,`db_name`,`search_name`);
+ALTER TABLE `tbl_incidencia`
+  ADD KEY `fk_mesa_inc` (`fk_mesa_inc`);
 
 --
--- Índexs per a la taula `pma__table_coords`
+-- Indices de la tabla `tbl_mesa`
 --
-ALTER TABLE `pma__table_coords`
-  ADD PRIMARY KEY (`db_name`,`table_name`,`pdf_page_number`);
+ALTER TABLE `tbl_mesa`
+  ADD PRIMARY KEY (`id_mesa`),
+  ADD KEY `id_num_sala` (`fk_num_sala`);
 
 --
--- Índexs per a la taula `pma__table_info`
+-- Indices de la tabla `tbl_registro`
 --
-ALTER TABLE `pma__table_info`
-  ADD PRIMARY KEY (`db_name`,`table_name`);
+ALTER TABLE `tbl_registro`
+  ADD PRIMARY KEY (`id_registro`),
+  ADD KEY `id_mesa` (`id_mesa`),
+  ADD KEY `id_camarero` (`id_camarero`);
 
 --
--- Índexs per a la taula `pma__table_uiprefs`
+-- Indices de la tabla `tbl_sala`
 --
-ALTER TABLE `pma__table_uiprefs`
-  ADD PRIMARY KEY (`username`,`db_name`,`table_name`);
+ALTER TABLE `tbl_sala`
+  ADD PRIMARY KEY (`id_sala`);
 
 --
--- Índexs per a la taula `pma__tracking`
+-- AUTO_INCREMENT de las tablas volcadas
 --
-ALTER TABLE `pma__tracking`
-  ADD PRIMARY KEY (`db_name`,`table_name`,`version`);
 
 --
--- Índexs per a la taula `pma__userconfig`
+-- AUTO_INCREMENT de la tabla `tbl_cargo`
 --
-ALTER TABLE `pma__userconfig`
-  ADD PRIMARY KEY (`username`);
+ALTER TABLE `tbl_cargo`
+  MODIFY `id_cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Índexs per a la taula `pma__usergroups`
+-- AUTO_INCREMENT de la tabla `tbl_empleado`
 --
-ALTER TABLE `pma__usergroups`
-  ADD PRIMARY KEY (`usergroup`,`tab`,`allowed`);
+ALTER TABLE `tbl_empleado`
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- Índexs per a la taula `pma__users`
+-- AUTO_INCREMENT de la tabla `tbl_mesa`
 --
-ALTER TABLE `pma__users`
-  ADD PRIMARY KEY (`username`,`usergroup`);
+ALTER TABLE `tbl_mesa`
+  MODIFY `id_mesa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT per les taules bolcades
+-- AUTO_INCREMENT de la tabla `tbl_registro`
 --
+ALTER TABLE `tbl_registro`
+  MODIFY `id_registro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT per la taula `pma__bookmark`
+-- AUTO_INCREMENT de la tabla `tbl_sala`
 --
-ALTER TABLE `pma__bookmark`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_sala`
+  MODIFY `id_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT per la taula `pma__column_info`
+-- Restricciones para tablas volcadas
 --
-ALTER TABLE `pma__column_info`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la taula `pma__export_templates`
+-- Filtros para la tabla `tbl_empleado`
 --
-ALTER TABLE `pma__export_templates`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `tbl_empleado`
+  ADD CONSTRAINT `tbl_empleado_ibfk_1` FOREIGN KEY (`fk_cargo_empleado`) REFERENCES `tbl_cargo` (`id_cargo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- AUTO_INCREMENT per la taula `pma__history`
+-- Filtros para la tabla `tbl_incidencia`
 --
-ALTER TABLE `pma__history`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_incidencia`
+  ADD CONSTRAINT `tbl_incidencia_ibfk_1` FOREIGN KEY (`fk_mesa_inc`) REFERENCES `tbl_mesa` (`id_mesa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- AUTO_INCREMENT per la taula `pma__pdf_pages`
+-- Filtros para la tabla `tbl_mesa`
 --
-ALTER TABLE `pma__pdf_pages`
-  MODIFY `page_nr` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_mesa`
+  ADD CONSTRAINT `tbl_mesa_ibfk_1` FOREIGN KEY (`fk_num_sala`) REFERENCES `tbl_sala` (`id_sala`) ON DELETE SET NULL ON UPDATE CASCADE;
 
---
--- AUTO_INCREMENT per la taula `pma__savedsearches`
---
-ALTER TABLE `pma__savedsearches`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- Base de dades: `test`
+-- Filtros para la tabla `tbl_registro`
 --
-CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `test`;
+ALTER TABLE `tbl_registro`
+  ADD CONSTRAINT `tbl_registro_ibfk_1` FOREIGN KEY (`id_camarero`) REFERENCES `tbl_empleado` (`id_empleado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tbl_registro_ibfk_2` FOREIGN KEY (`id_mesa`) REFERENCES `tbl_mesa` (`id_mesa`) ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
