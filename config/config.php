@@ -9,10 +9,10 @@ const BD =
 
     'EMPLEADO' => 
     [
-        'TABLA' => 'tbl_camareros',
-        'ID' => 'id_camarero',
-        'NOMBRE' => 'nom_camarero',
-        'PASSWORD' => 'password_camarero'
+        'TABLA' => 'tbl_empleado',
+        'ID' => 'id_empleado',
+        'NOMBRE' => 'nom_empleado',
+        'PASSWORD' => 'password_empleado'
     ],
 
     'SALA' =>
@@ -39,9 +39,9 @@ const BD =
 
 const LOGIN_FORM = 
 [
-    'USER' => 'user',
-    'PASSWORD' => 'password',
-    'SEND' => 'Entrar'
+    'USER' => 'nom_empleado',
+    'PASSWORD' => 'password_empleado',
+    'SEND' => 'button'
 ];
 
 const FILTROS = 
