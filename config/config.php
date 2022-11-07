@@ -14,6 +14,7 @@ const BD =
         'NOMBRE' => 'nom_empleado',
         'PASSWORD' => 'password_empleado',
         'DNI' => 'dni_empleado',
+        'EMAIL' => 'email_empleado',
         'CARGO' => 'fk_cargo_empleado',
         'PASSWORD' => 'password_empleado'
     ],
@@ -68,7 +69,7 @@ const BD =
 
 const LOGIN_FORM = 
 [
-    'USER' => 'nom_empleado',
+    'USER' => 'email_empleado',
     'PASSWORD' => 'password_empleado',
     'SEND' => 'button'
 ];

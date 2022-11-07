@@ -15,11 +15,11 @@ function registrar_array_en_sesion($vars, $subarray = null)
         session_start();
         if ($subarray != null) {
             foreach ($vars as $key => $value) {
-                $_SESSION[$subarray][$key] = $var;
+                $_SESSION[$subarray][$key] = $value;
             }
         }else {
             foreach ($vars as $key => $value) {
-                $_SESSION[$key] = $var;
+                $_SESSION[$key] = $value;
             }
         }
         return true;
@@ -33,7 +33,7 @@ function validar_sesion()
     require_once '../config/config.php';
 
     session_start();
-    if (!isset($_SESSION[GESTOR['email']])) {
-        echo "<script>window.location.href = '../view/login.html?error=errorSesion';</script>";
+    if (!isset($_SESSION['USER'][BD['EMPLEADO']['EMAIL']])) {
+        return false;
     }
 }

@@ -1,6 +1,12 @@
 <?php
 
 require_once '../config/conexion.php';
+require_once '../proc/func.php';
+
+// Validar sesion
+if (!validar_sesion()) {
+    // redirect('login_controller.php?val=false');
+}
 
 // Recoger filtros
 $filtros = [];

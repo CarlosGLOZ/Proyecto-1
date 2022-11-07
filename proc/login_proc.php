@@ -5,11 +5,6 @@ require_once 'func.php';
 // Validar entrada
 if (!isset($_POST[LOGIN_FORM['SEND']])) {
     redirect('../view/login.php');
-    // foreach ($_POST as $key => $value) {
-    //     echo "[$key] -> [$value]<br>";
-    // }
-    // echo "sfd";
-    // die();
 }
 
 // Recoger y encriptar datos de POST, guardarlos en array $params
@@ -23,7 +18,7 @@ foreach ($_POST as $key => $value) {
 }
 
 // Validar datos con la BDD
-$sql = "SELECT * FROM ".BD['EMPLEADO']['TABLA']." WHERE ".BD['EMPLEADO']['NOMBRE']." = '".$params[LOGIN_FORM['USER']]."';";
+$sql = "SELECT * FROM ".BD['EMPLEADO']['TABLA']." WHERE ".BD['EMPLEADO']['EMAIL']." = '".$params[LOGIN_FORM['USER']]."';";
 
 // echo $sql;
 // die();
@@ -35,7 +30,7 @@ if ($params[BD['EMPLEADO']['PASSWORD']] != $result[BD['EMPLEADO']['PASSWORD']]) 
 }
 
 // Iniciar sesión
-if (registrar_array_en_sesion($result, 'user')) { // Registra los valores de un array en la sesión (utiliza las keys del array) en un subarray 'user'
+if (registrar_array_en_sesion($result, 'USER')) { // Registra los valores de un array en la sesión (utiliza las keys del array) en un subarray 'user'
     redirect('../controller/index_controller.php');
 }
 
