@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2022 a las 18:16:54
+-- Tiempo de generación: 07-11-2022 a las 18:26:42
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_restaurante`
 --
+CREATE DATABASE IF NOT EXISTS `bd_restaurante` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `bd_restaurante`;
 
 -- --------------------------------------------------------
 
@@ -51,6 +53,7 @@ CREATE TABLE `tbl_empleado` (
   `nom_empleado` varchar(20) NOT NULL,
   `ape_empleado` varchar(20) NOT NULL,
   `dni_empleado` varchar(9) NOT NULL,
+  `password_empleado` text NOT NULL,
   `fk_cargo_empleado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -58,10 +61,10 @@ CREATE TABLE `tbl_empleado` (
 -- Volcado de datos para la tabla `tbl_empleado`
 --
 
-INSERT INTO `tbl_empleado` (`id_empleado`, `nom_empleado`, `ape_empleado`, `dni_empleado`, `fk_cargo_empleado`) VALUES
-(7, 'Sergi', 'Garcia', '47864649Q', 1),
-(9, 'Carlos', 'Piedras', '47864650V', 1),
-(10, 'Alejandro', 'Lay', '46785678F', 2);
+INSERT INTO `tbl_empleado` (`id_empleado`, `nom_empleado`, `ape_empleado`, `dni_empleado`, `password_empleado`, `fk_cargo_empleado`) VALUES
+(7, 'Sergi', 'Garcia', '47864649Q', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
+(9, 'Carlos', 'Piedras', '47864650V', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 1),
+(10, 'Alejandro', 'Lay', '46785678F', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2);
 
 -- --------------------------------------------------------
 
