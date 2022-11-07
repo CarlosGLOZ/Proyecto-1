@@ -24,7 +24,20 @@ if (!$entrada_valida) {
     echo "<script>window.location.href = '../controller/login_controller.php';</script>";
 }
 ?>
-
+<div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
 <div class="region">
     
     <div class="widget">
@@ -50,7 +63,7 @@ if (!$entrada_valida) {
                     </div>
                     <!-- <a href="#"> Not registered? Create an account</a> -->
 
-                    <button name="button" class="button-form" type="submit">Login</button>
+                    <button onclick="return validaFormulario()" name="button" class="button-form" type="submit">Login</button>
                     </form>  
                     <!-- <button class="button-volver" onclick="window.location.href='./index.php'">Volver</button>            -->
                 </div>
