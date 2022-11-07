@@ -27,3 +27,13 @@ function registrar_array_en_sesion($vars, $subarray = null)
         return false;
     }
 }
+
+function validar_sesion()
+{
+    require_once '../config/config.php';
+
+    session_start();
+    if (!isset($_SESSION[GESTOR['email']])) {
+        echo "<script>window.location.href = '../view/login.html?error=errorSesion';</script>";
+    }
+}
