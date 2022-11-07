@@ -17,6 +17,14 @@
 
 <body>
 
+<?php
+// Validación de entrada valida
+
+if (!$entrada_valida) {
+    echo "<script>window.location.href = '../controller/login_controller.php';</script>";
+}
+?>
+
 <div class="region">
     
     <div class="widget">
