@@ -4,12 +4,8 @@ require_once 'func.php';
 
 // Validar entrada
 if (!isset($_POST[LOGIN_FORM['SEND']])) {
-    redirect('../view/login.php');
-    // foreach ($_POST as $key => $value) {
-    //     echo "[$key] -> [$value]<br>";
-    // }
-    // echo "sfd";
-    // die();
+    die();
+    redirect('../controller/login_controller.php');
 }
 
 // Recoger y encriptar datos de POST, guardarlos en array $params
@@ -31,12 +27,14 @@ echo $sql;
 $result = mysqli_fetch_assoc(mysqli_query($conexion, $sql));
 
 if ($params[BD['EMPLEADO']['PASSWORD']] != $result[BD['EMPLEADO']['PASSWORD']]) {
-    // redirect('../controller/login_controller.php?val=false');
+    die();
+    redirect('../controller/login_controller.php?val=false');
 }
 
 // Iniciar sesión
-if (registrar_array_en_sesion($result, 'user')) { // Registra los valores de un array en la sesión (utiliza las keys del array) en un subarray 'user'
+if (registrar_array_en_sesion($result, 'USER')) { // Registra los valores de un array en la sesión (utiliza las keys del array) en un subarray 'user'
     redirect('../controller/index_controller.php');
+    die();
 }
 
 exit();

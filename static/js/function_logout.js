@@ -13,7 +13,7 @@ function aviso3() {
         cancelButtonText: 'No estoy seguro'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = './logout.php';
+            window.location.href = '../view/logout.php';
         }
     })
 
