@@ -6,7 +6,7 @@ require_once '../models/mesa.php';
 
 // Validar sesion
 if (!validar_sesion()) {
-    // redirect('login_controller.php?val=false');
+    redirect('login_controller.php?val=false');
 }
 
 // Recoger filtros

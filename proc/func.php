@@ -36,4 +36,5 @@ function validar_sesion()
     if (!isset($_SESSION['USER'][BD['EMPLEADO']['EMAIL']])) {
         return false;
     }
+    return true;
 }

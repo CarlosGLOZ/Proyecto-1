@@ -64,7 +64,7 @@ class Mesa
 
         // aplicar filtros
         foreach ($filtros as $key => $value) {
-            $sql = $sql." AND ".FILTROS['BD'][$key]." = $VALUE";
+            $sql = $sql." AND ".FILTROS['BD'][$key]." = $value";
         }
 
         $sql = $sql.";";
@@ -72,5 +72,28 @@ class Mesa
         return mysqli_query($conexion, $sql);
     }
 
-    
+    public static function getRegistros($conexion, $filtros)
+    {
+        // Recoger todas las mesas
+        $sql = "SELECT * FROM ".BD['REGISTRO']['TABLA']." WHERE 1=1";
+
+        // aplicar filtros
+        foreach ($filtros as $key => $value) {
+            $sql = $sql." AND ".FILTROS['BD'][$key]." = $value";
+        }
+
+        $sql = $sql.";";
+
+        return mysqli_query($conexion, $sql);
+    }
+
+    public static function mesaExiste($conexion, $mesa)
+    {
+        $sql = "SELECT COUNT(1) AS num_mesas FROM ".BD['MESA']['TABLA']." WHERE ".BD['MESA']['ID']." = $mesa;";
+
+        if (mysqli_fetch_assoc(mysqli_query($conexion, $sql))['num_mesas'] < 1) {
+            return false;
+        }
+        return true;
+    }
 }
