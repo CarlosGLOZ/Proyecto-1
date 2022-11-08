@@ -30,6 +30,7 @@ const BD =
     [
         'TABLA' => 'tbl_mesa',
         'ID' => 'id_mesa',
+        'NUMERO' => 'num_mesa',
         'ESTADO' => 'estado_mesa',
         'SALA' => 'fk_num_sala',
         'CAPACIDAD' => 'capacidad_mesa'

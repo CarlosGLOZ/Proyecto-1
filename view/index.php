@@ -16,15 +16,34 @@
     
     foreach ($mesas as $mesa) {
         echo "<br>";
-        foreach ($mesa as $key => $value) {
-            echo "[$key] -> [$value]<br>";
-        }
+        // foreach ($mesa as $key => $value) {
+        //     echo "[$key] -> [$value]<br>";
+        // }
 
-        ?> <form action="../proc/cambiar_estado_mesa.php" method="get">
-            <input type="hidden" name="id_mesa" value=<?php echo $mesa[BD['MESA']['ID']];?>>
-            <input type="hidden" name="estado_mesa" value="1">
-            <input type= "submit" value="Ocupar Mesa">
-            </form> <?php
+        //Array de los estados
+        $estados = [ 
+            1 => 'ocupado',
+            0 => 'libre',
+            2 => 'En mantenimiento',
+        ];
+        
+        echo 'Mesa nº'.$mesa [BD['MESA']['NUMERO']].' '.$estados[$mesa[BD['MESA']['ESTADO']]];
+        //llama al Nª Mesa        llama al estado y con $estado lo muestra segun el array de $estados
+        ?> 
+
+        <!-- Funcion redirigir para enviar el value del estado a cambiar_estado_mesa.php -->
+        <script>
+            function redirigir(url) {window.location.href=url;}
+        </script>
+        <button onclick="redirigir('../proc/cambiar_estado_mesa.php?<?php echo BD['MESA']['ID'].'='.$mesa[BD['MESA']['ID']];?>&<?php echo BD['MESA']['ESTADO'].'=1'?>');">Ocupar</button>
+        <button onclick="redirigir('../proc/cambiar_estado_mesa.php?<?php echo BD['MESA']['ID'].'='.$mesa[BD['MESA']['ID']];?>&<?php echo BD['MESA']['ESTADO'].'=0'?>');">Liberar</button>
+        <button onclick="redirigir('../proc/cambiar_estado_mesa.php?<?php echo BD['MESA']['ID'].'='.$mesa[BD['MESA']['ID']];?>&<?php echo BD['MESA']['ESTADO'].'=2'?>');">Mantenimiento</button>
+        <!-- <form action="../proc/cambiar_estado_mesa.php" method="get">
+           
+
+        </form> -->
+        
+        <?php
     }
 ?>    
 </body>
