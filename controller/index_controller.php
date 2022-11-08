@@ -22,10 +22,11 @@ $sql = $sql.";";
 
 $mesas = mysqli_query($conexion, $sql);
 
+
 // foreach ($mesas as $mesa) {
 //     $mesa[BD['MESA']['ID']];
 // }
 
 // Llamar a pagina
 $entrada_valida = true;
-require_once '../view/index.php';
+require_once '../view/mostrar.php';

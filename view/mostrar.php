@@ -18,6 +18,11 @@ if(!isset($_SESSION["nom_empleado"])){
     
 </head>
 <body>
+  <?php
+  if (!$entrada_valida) {
+    echo "<script>window.location.href = '../controller/index_controller.php';</script>";
+}
+  ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img class="foto" src="../static/img/logores.png" alt=""></a>

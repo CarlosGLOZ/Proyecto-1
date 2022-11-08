@@ -35,5 +35,7 @@ function validar_sesion()
     session_start();
     if (!isset($_SESSION[GESTOR['email']])) {
         echo "<script>window.location.href = '../view/login.html?error=errorSesion';</script>";
+
     }
+    return true;
 }
