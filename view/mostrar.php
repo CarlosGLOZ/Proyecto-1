@@ -16,6 +16,7 @@
     
 </head>
 <body>
+<script src="../static/js/function_logout.js"></script>
   <?php
   if (!$entrada_valida) {
     echo "<script>window.location.href = '../controller/index_controller.php';</script>";
@@ -51,24 +52,24 @@
   
       <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt="">
     
-      <div>
+     <div>
     <button href="#resultado"  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button" onClick="aviso" class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  type="button" onClick="aviso();" class="button-form">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
      </div>  -->
   </a>
-    </div>
+  </div>
     <div class="bloque">
     <a href=""><img class="mesa" src="../static/img/mesa4-verde.PNG" alt="">
     <div>
     <button  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button"  class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -81,7 +82,7 @@
     <button  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button" class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -90,12 +91,12 @@
     </div>
          
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa6-verde.PNG" alt="">
+    <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt="">
     <div>
     <button  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button" class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -113,7 +114,7 @@
     <button href="#resultado"  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button" onClick="aviso" class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -126,7 +127,7 @@
     <button  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button"  class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -139,7 +140,7 @@
     <button  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button" class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -148,12 +149,12 @@
     </div>
          
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa6-verde.PNG" alt="">
+    <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt="">
     <div>
     <button  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button" class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -172,7 +173,7 @@
     <button href="#resultado"  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button" onClick="aviso" class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -185,7 +186,7 @@
     <button  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button"  class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -198,7 +199,7 @@
     <button  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button" class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -207,12 +208,12 @@
     </div>
          
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa6-verde.PNG" alt="">
+    <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt="">
     <div>
     <button  name="button" class="button-form" name="insesion" type="submit">Ocupar</button>
     </div>
     <div>
-    <button  name="button" class="button-form" name="insesion" type="submit">Liberar</button>
+    <button  name="button" onClick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
     </div>
      <!-- <div>
      <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
@@ -230,6 +231,7 @@
 			</div>
 		</div>
 
-<script src="../static/js/function_logout.js"></script>
+
+
 </body>
 </html>

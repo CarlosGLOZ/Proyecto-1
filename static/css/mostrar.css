@@ -25,6 +25,7 @@ img:hover{
     opacity: .4;
     background-color: transparent;
 }
+
 .button-form {
     font-family: "Asap", sans-serif;
     cursor: pointer;
@@ -45,7 +46,7 @@ img:hover{
   .button-form:hover{
     background-color: rgb(70, 53, 187);
   }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1000px) {
     .region {
         width: 100%;
         display: flex;
@@ -54,7 +55,7 @@ img:hover{
         align-items: center;
     }
     .bloque{
-        width: 100%;
+        width: 50%;
     }
 }
 @media only screen and (max-width: 500px) {
