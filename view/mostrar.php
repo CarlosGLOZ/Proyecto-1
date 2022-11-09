@@ -48,207 +48,121 @@
         </div>
   </div>
 </nav>
+
 <!-- <div id="test"></div> -->
 <div class="region">
     <div class="bloque">
-  
-      <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt="">
-    
-      <div>
-        <!-- <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button> -->
-          
-        <br><br>
-        <button type="button" class="button-form2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Ocultar
-</button>
-        <!-- <a type="button" class="button-form2" onclick="test()">
-          Ocupar
-</a> -->
-      
-    <button  type="button" onclick="aviso();" class="button-form">Liberar</button>
+      <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button type="button" class="button-form2" data-bs-toggle="modal" data-bs-target="#exampleModal">Ocultar</button>
+          <button  type="button" onclick="aviso();" class="button-form">Liberar</button>
+        </div>
     </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
-  </div>
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa4-verde.PNG" alt="">
-    <div>
-    <br><br>
-    <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
-    
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
-    </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
+      <a href=""><img class="mesa" src="../static/img/mesa4-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
+          <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+        </div>
     </div>
     
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa6-verde.PNG" alt="">
-    <div>
-    <br><br>
-    <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
-    
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
-    </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
+      <a href=""><img class="mesa" src="../static/img/mesa6-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
+          <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+        </div>
     </div>
          
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt="">
-    <div>
-    <br><br>
-    <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
-    
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+      <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
+          <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+        </div>
     </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
-    </div>
-
 </div>
+
+
 <div class="region">
     <div class="bloque">
-  
-      <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt="">
-    
-      <div>
-      <br><br>
-    <button href="#resultado"  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
-    
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
-    </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
+      <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button type="button" class="button-form2" data-bs-toggle="modal" data-bs-target="#exampleModal">Ocultar</button>
+          <button  type="button" onclick="aviso();" class="button-form">Liberar</button>
+        </div>
     </div>
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa4-verde.PNG" alt="">
-    <div>
-    <br><br>
-    <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
+      <a href=""><img class="mesa" src="../static/img/mesa4-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
+          <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+        </div>
+    </div>
     
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
-    </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
-    </div>
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa6-verde.PNG" alt="">
-    <div>
-    <br><br>
-    <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
-
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
-    </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
+      <a href=""><img class="mesa" src="../static/img/mesa6-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
+          <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+        </div>
     </div>
          
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt="">
-    <div>
-    <br><br>
-    <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
-    
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+      <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
+          <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+        </div>
     </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
-    </div>
-
 </div>
+
 
 <div class="region">
     <div class="bloque">
-  
-      <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt="">
+      <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button type="button" class="button-form2" data-bs-toggle="modal" data-bs-target="#exampleModal">Ocultar</button>
+          <button  type="button" onclick="aviso();" class="button-form">Liberar</button>
+        </div>
+    </div>
+    <div class="bloque">
+      <a href=""><img class="mesa" src="../static/img/mesa4-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
+          <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+        </div>
+    </div>
     
-      <div>
-      <br><br>
-    <button href="#resultado"  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
-
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
-    </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
-    </div>
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa4-verde.PNG" alt="">
-    <div>
-    <br><br>
-    <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
-   
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+      <a href=""><img class="mesa" src="../static/img/mesa6-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
+          <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+        </div>
     </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
-    </div>
+         
     <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa6-verde.PNG" alt="">
-    <div>
-    <br><br>
-    <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
-   
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+      <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt=""></a>
+        <div>
+          <br><br>
+          <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
+          <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
+        </div>
     </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
-    </div>
-        
-    <div class="bloque">
-    <a href=""><img class="mesa" src="../static/img/mesa2-verde.PNG" alt="">
-    <div>
-    <br><br>
-    <button  name="button" class="button-form2" name="insesion" type="submit">Ocupar</button>
-  
-    <button  name="button" onclick="aviso();" class="button-form" name="insesion" type="submit">Liberar</button>
-    </div>
-     <!-- <div>
-     <button  name="button" class="button-form" name="insesion" type="submit">Mantenimiento</button>
-     </div>  -->
-  </a>
-    </div>
-
 </div>
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+
 
 <script src="../static/js/function_logout.js"></script>
 </body>
