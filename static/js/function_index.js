@@ -1,7 +1,6 @@
-function aviso3() {
+function aviso() {
     Swal.fire({
-        titleText: "¿Estas seguro que quieres salir? ",
-        text: "Si dices que si tendras que volver a iniciar sesión.",
+        titleText: "¿Estas seguro? ",
         imageUrl: '../static/img/imgexcla.png',
         imageWidth: 200,
         imageHeight: 200,
@@ -9,11 +8,11 @@ function aviso3() {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         background: '#white',
-        confirmButtonText: 'Sí, salir',
-        cancelButtonText: 'No estoy seguro'
+        confirmButtonText: 'Sí',
+        cancelButtonText: 'No'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = '../view/logout.php';
+            window.location.href = '../view/mostrar.php';
         }
     })
 

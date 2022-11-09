@@ -89,6 +89,6 @@
 </div>
 <!-- /Loop -->
 
-<script src="../static/js/function_logout.js"></script>
+<script src="../static/js/function_index.js"></script>
 </body>
 </html>
