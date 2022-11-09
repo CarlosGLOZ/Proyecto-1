@@ -97,85 +97,6 @@ class Mesa
         return true;
     }
 
-    // public static function cambiarEstadoMesa($conexion, $id_mesa, $estado_mesa, $comensales=null, $desc_inc = null)
-        // {
-        //     try {
-
-        //         // Comprobar si la mesa estaba en mantenimiento hasta ahora
-        //         if (Mesa::getEstadoMesa($conexion, $id_mesa) == 2) {
-        //             // Si la mesa deja de estar en mantenimiento
-        //             if ($estado_mesa != 2) {
-        //                 $sql = "UPDATE ".BD['INCIDENCIA']['TABLA']." SET ".BD['INCIDENCIA']['ESTADO']." = 0 WHERE ".BD['INCIDENCIA']['ID']." = ".Mesa::getIncidenciaActivaDeMesa($conexion, $id_mesa)[BD['INCIDENCIA']['ID']].";";
-        //                 echo $sql;
-        //                 die();
-        //             }
-        //         } else {
-        //             // Si la mesa se pone en mantenimiento
-        //             if ($estado_mesa != 2) {
-        //                 // Cerrar la mesa
-        //                 $id_registro = Mesa::getRegistrosAbiertos($conexion, $id_mesa)[0][BD['REGISTRO']['ID']];
-
-        //                 $sql0 = "
-        //                     UPDATE ".BD['REGISTRO']['TABLA']."
-        //                     SET ".BD['REGISTRO']['FECHASALIDA']." = '".date('Y-m-d H:i:s')."'
-        //                     WHERE ".BD['REGISTRO']['ID']." = $id_registro
-        //                 ;";
-                        
-        //                 mysqli_query($conexion, $sql0);
-
-        //                 if ($desc_inc = null) {
-        //                     return false;
-        //                 }
-        //                 $sql = "
-        //                     INSERT INTO ".BD['INCIDENCIA']['TABLA']."(".BD['INCIDENCIA']['ID'].", ".BD['INCIDENCIA']['NOMBRE'].", ".BD['INCIDENCIA']['ESTADO'].", ".BD['INCIDENCIA']['MESA'].")
-        //                     VALUES (NULL, ".mysqli_real_escape_string($conexion, trim(strip_tags($desc_inc))).", 1, $id_mesa)
-        //                 ;";
-
-        //                 mysqli_query($conexion, $sql);
-
-        //                 // Cambiar el estado de la mesa en la tabla mesa
-        //                 $sql = "UPDATE ".BD['MESA']['TABLA']." SET ".BD['MESA']['ESTADO']." = '$estado_mesa' WHERE ".BD['MESA']['ID']." = $id_mesa";
-        //                 mysqli_query($conexion, $sql);
-
-        //                 return true;
-        //             }
-        //         }
-                
-        //         // Crear registro de mesa según el estado
-        //         if ($estado_mesa == 0) {
-        //             $id_registro = Mesa::getRegistrosAbiertos($conexion, $id_mesa)[0][BD['REGISTRO']['ID']];
-
-        //             $sql0 = "
-        //                 UPDATE ".BD['REGISTRO']['TABLA']."
-        //                 SET ".BD['REGISTRO']['FECHASALIDA']." = '".date('Y-m-d H:i:s')."'
-        //                 WHERE ".BD['REGISTRO']['ID']." = $id_registro
-        //             ;";
-                    
-        //             return mysqli_query($conexion, $sql0);
-                    
-        //         } elseif ($estado_mesa == 1) {
-        //             session_start();
-        //             $sql2 = "
-        //                 INSERT INTO ".BD['REGISTRO']['TABLA']." 
-        //                 (".BD['REGISTRO']['ID'].", ".BD['REGISTRO']['FECHAENTRADA'].", ".BD['REGISTRO']['FECHASALIDA'].", ".BD['REGISTRO']['MESA'].", ".BD['REGISTRO']['CAMARERO'].", ".BD['REGISTRO']['COMENSALES'].")
-        //                 VALUES(NULL, '".date('Y-m-d H:i:s')."', NULL, $id_mesa, ".$_SESSION['USER'][BD['EMPLEADO']['ID']].", $comensales)
-        //             ;";
-
-        //             return mysqli_query($conexion, $sql2);
-
-        //         }
-
-        //         // Cambiar el estado de la mesa en la tabla mesa
-        //         $sql = "UPDATE ".BD['MESA']['TABLA']." SET ".BD['MESA']['ESTADO']." = '$estado_mesa' WHERE ".BD['MESA']['ID']." = $id_mesa";
-        //         mysqli_query($conexion, $sql);
-
-        //         return true;
-        //     } catch (\SQL $th) {
-        //         echo "<script>alert('No se ha podido actualizar la mesa');</script>";
-        //         return false;
-        //     }
-    // }
-
     public static function cambiarEstadoMesa($conexion, $id_mesa, $estado_mesa)
     {
         //  Cambiar el estado de la mesa en la tabla mesa
@@ -185,6 +106,7 @@ class Mesa
 
     public static function crearRegistroMesa($conexion, $id_mesa, $comensales)
     {
+        session_start();
         $sql = "
             INSERT INTO ".BD['REGISTRO']['TABLA']." 
             (".BD['REGISTRO']['ID'].", ".BD['REGISTRO']['FECHAENTRADA'].", ".BD['REGISTRO']['FECHASALIDA'].", ".BD['REGISTRO']['MESA'].", ".BD['REGISTRO']['CAMARERO'].", ".BD['REGISTRO']['COMENSALES'].")
@@ -211,7 +133,7 @@ class Mesa
     {
         $sql = "
             INSERT INTO ".BD['INCIDENCIA']['TABLA']."(".BD['INCIDENCIA']['ID'].", ".BD['INCIDENCIA']['NOMBRE'].", ".BD['INCIDENCIA']['ESTADO'].", ".BD['INCIDENCIA']['MESA'].")
-            VALUES (NULL, ".mysqli_real_escape_string($conexion, trim(strip_tags($desc_inc))).", 1, $id_mesa)
+            VALUES (NULL, '".mysqli_real_escape_string($conexion, trim(strip_tags($descripcion)))."', 1, $id_mesa)
         ;";
         
         return mysqli_query($conexion, $sql);

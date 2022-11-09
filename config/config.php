@@ -66,7 +66,7 @@ const BD =
     'INCIDENCIA' =>
     [
         'TABLA' => 'tbl_incidencia',
-        'ID' => 'id_incidencia',
+        'ID' => 'id_inc',
         'NOMBRE' => 'nom_inc',
         'ESTADO' => 'estado_inc',
         'MESA' => 'fk_mesa_inc'

@@ -24,9 +24,9 @@
         ?> 
 
         <!-- Funcion redirigir para enviar el value del estado a cambiar_estado_mesa.php -->
-        <button onclick="redirigir('../proc/cambiar_estado_mesa.php?<?php echo BD['MESA']['ID'].'='.$mesa[BD['MESA']['ID']];?>&<?php echo BD['MESA']['ESTADO'].'=1'?>');">Ocupar</button>
+        <button onclick="redirigir('../proc/cambiar_estado_mesa.php?<?php echo BD['MESA']['ID'].'='.$mesa[BD['MESA']['ID']];?>&<?php echo BD['MESA']['ESTADO'].'=1'?>&num_comensales=1');">Ocupar</button>
         <button onclick="redirigir('../proc/cambiar_estado_mesa.php?<?php echo BD['MESA']['ID'].'='.$mesa[BD['MESA']['ID']];?>&<?php echo BD['MESA']['ESTADO'].'=0'?>');">Liberar</button>
-        <button onclick="redirigir('../proc/cambiar_estado_mesa.php?<?php echo BD['MESA']['ID'].'='.$mesa[BD['MESA']['ID']];?>&<?php echo BD['MESA']['ESTADO'].'=2'?>');">Mantenimiento</button>
+        <button onclick="redirigir('../proc/cambiar_estado_mesa.php?<?php echo BD['MESA']['ID'].'='.$mesa[BD['MESA']['ID']];?>&<?php echo BD['MESA']['ESTADO'].'=2'?>&nom_inc=test');">Mantenimiento</button>
         <!-- <form action="../proc/cambiar_estado_mesa.php" method="get">
            
 

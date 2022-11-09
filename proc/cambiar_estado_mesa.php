@@ -57,9 +57,9 @@ $estado_actual = Mesa::getEstadoMesa($conexion, $id_mesa);
 // Acciones
     if ($estado_actual == 0) {
         if ($estado_mesa == 1) {
-            Mesa::crearRegistroMesa($onexion, $id_mesa, $comensales);
+            Mesa::crearRegistroMesa($conexion, $id_mesa, $comensales);
         } elseif ($estado_mesa == 2) {
-            Mesa::crearIncidenciaMesa($onexion, $id_mesa, $desc_inc);
+            Mesa::crearIncidenciaMesa($conexion, $id_mesa, $desc_inc);
         } else {
             redirect('../controller/index_controller.php?error=true');
         }
@@ -68,7 +68,7 @@ $estado_actual = Mesa::getEstadoMesa($conexion, $id_mesa);
             Mesa::cerrarRegistroMesa($conexion, $id_mesa);
         } elseif ($estado_mesa == 2) {
             Mesa::cerrarRegistroMesa($conexion, $id_mesa);
-            Mesa::crearIncidenciaMesa($onexion, $id_mesa, $desc_inc);
+            Mesa::crearIncidenciaMesa($conexion, $id_mesa, $desc_inc);
         } else {
             redirect('../controller/index_controller.php?error=true');
         }
@@ -78,9 +78,9 @@ $estado_actual = Mesa::getEstadoMesa($conexion, $id_mesa);
         } elseif ($estado_mesa == 1) {
             
             Mesa::cerrarIncidenciaMesa($conexion, $id_mesa);
-            Mesa::crearRegistroMesa($onexion, $id_mesa, $comensales);
+            Mesa::crearRegistroMesa($conexion, $id_mesa, $comensales);
         } else {
-            redirect('../controller/index_controller.php?error=true');
+            //redirect('../controller/index_controller.php?error=true');
         }
     } else {
         redirect('../controller/index_controller.php?error=true');
