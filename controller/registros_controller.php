@@ -1,12 +1,17 @@
 <?php
 
 require_once '../config/conexion.php';
-require_once '../proc/func.php';
 require_once '../models/mesa.php';
 
 // Validar sesion
 if (!validar_sesion()) {
     redirect('login_controller.php?val=false');
+}
+
+// Validar que mesa está seteado y que es una mesa valida
+
+if (!isset($_GET['filtro_mesa']) || !Mesa::mesaExiste($conexion, $_GET['filtro_mesa'])) {
+    redirect('index_controller.php');
 }
 
 // Recoger filtros
@@ -17,22 +22,9 @@ foreach ($_GET as $key => $value) {
     }
 }
 
-if (!isset($filtros[FILTROS['SALA']])) {
-    $filtros[FILTROS['SALA']] = 1;
-}
-
-$mesas = Mesa::getMesas($conexion, $filtros);
-
-
-// foreach ($mesas as $mesa) {
-//     foreach ($mesa as $key => $value) {
-//         echo "[$key] -> [$value]<br>";
-//     }
-//     echo "<br>";
-// }
-// die();
+// Recoger registros
+$registros = Mesa::getRegistros($conexion, $filtros);
 
 // Llamar a pagina
 $entrada_valida = true;
-
-require_once '../view/index.php';
+require_once '../view/registros.php';
