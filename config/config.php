@@ -30,9 +30,17 @@ const BD =
     [
         'TABLA' => 'tbl_mesa',
         'ID' => 'id_mesa',
+        'NUMERO' => 'num_mesa',
         'ESTADO' => 'estado_mesa',
         'SALA' => 'fk_num_sala',
-        'CAPACIDAD' => 'capacidad_mesa'
+        'CAPACIDAD' => 'capacidad_mesa',
+
+        'ESTADOS' => 
+        [
+            0 => 'libre',
+            1 => 'ocupado',
+            2 => 'mantenimiento'
+        ]
     ],
 
     'REGISTRO' =>
@@ -58,7 +66,7 @@ const BD =
     'INCIDENCIA' =>
     [
         'TABLA' => 'tbl_incidencia',
-        'ID' => 'id_incidencia',
+        'ID' => 'id_inc',
         'NOMBRE' => 'nom_inc',
         'ESTADO' => 'estado_inc',
         'MESA' => 'fk_mesa_inc'
@@ -76,9 +84,12 @@ const LOGIN_FORM =
 
 const FILTROS = 
 [
+    // Index
     'SALA' => 'filtro_sala',
     'CAPACIDAD' => 'filtro_capacidad',
     'DISPONIBILIDAD' => 'filtro_disponibilidad',
+
+    // Registros
     'MESA' => 'filtro_mesa',
 
     'BD' => // nombres de los filtros en la base de datos

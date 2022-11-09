@@ -26,4 +26,5 @@ $mesas = Mesa::getMesas($conexion, $filtros);
 
 // Llamar a pagina
 $entrada_valida = true;
+
 require_once '../view/mostrar.php';
