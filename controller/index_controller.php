@@ -19,6 +19,7 @@ foreach ($_GET as $key => $value) {
 
 $mesas = Mesa::getMesas($conexion, $filtros);
 
+
 // foreach ($mesas as $mesa) {
 //     $mesa[BD['MESA']['ID']];
 // }
@@ -26,4 +27,4 @@ $mesas = Mesa::getMesas($conexion, $filtros);
 // Llamar a pagina
 $entrada_valida = true;
 
-require_once '../view/index.php';
+require_once '../view/mostrar.php';
