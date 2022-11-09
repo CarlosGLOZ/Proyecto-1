@@ -3,6 +3,7 @@
 function redirect($path)
 {
     echo "<script>window.location.href = '$path';</script>";
+    die();
 }
 
 function registrar_array_en_sesion($vars, $subarray = null)

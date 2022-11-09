@@ -1,0 +1,124 @@
+<?php
+
+require_once '../config/conexion.php';
+require_once '../models/mesa.php';
+require_once 'func.php';
+//No hacemos require de config porque ya lo contiene conexion.php
+
+$id_mesa = $_GET[BD['MESA']['ID']]; //Recupera el valor del id dentro de la const mesa 
+$estado_mesa = $_GET[BD['MESA']['ESTADO']];
+$comensales = null;
+$desc_inc = null;
+$estado_actual = Mesa::getEstadoMesa($conexion, $id_mesa);
+
+// Validaciones
+
+    // Si la mesa no es valida
+    if (!Mesa::mesaExiste($conexion, $id_mesa)) {
+        redirect('../controller/index_controller.php?error=true');
+    } 
+
+    // Si el estado no es valido
+    if (!in_array($estado_mesa, BD['MESA']['ESTADOS'])) {
+        redirect('../controller/index_controller.php?error=true');
+    }
+    
+    // Si el estado de la mesa es el mismo, devolver a index
+    if ($estado_mesa == $estado_actual) {
+        redirect('../controller/index_controller.php?error=true');
+    }
+
+    if ($estado_mesa == 1) {
+
+        // Si el estado es ocupado y no esta seteado el valor de comensales o es un valor invalido
+        if (!isset($_GET[BD['REGISTRO']['COMENSALES']])) {
+            redirect('../controller/index_controller.php?error=true');
+
+        if (!Mesa::validarComensales($conexion, $id_mesa, $_GET[BD['REGISTRO']['COMENSALES']])) {
+            redirect('../controller/index_controller.php?error=true');
+        } 
+
+        $comensales = $_GET[BD['REGISTRO']['COMENSALES']];
+    } elseif ($estado_mesa == 2) {
+        
+        // Si el estado es incidencia y no está seteado el valor de desc_inc
+        if (!isset($_GET[BD['INCIDENCIA']['NOMBRE']])) {
+            redirect('../controller/index_controller.php?error=true');
+        } 
+        
+        if (trim(strip_tags($_GET[BD['INCIDENCIA']['NOMBRE']])) == '') {
+            redirect('../controller/index_controller.php?error=true');
+        }
+
+        $desc_inc = trim(strip_tags($_GET[BD['INCIDENCIA']['NOMBRE']]));
+
+    }
+
+// Acciones
+    if ($estado_actual == 0) {
+        if ($estado_mesa == 1) {
+            Mesa::crearRegistroMesa($onexion, $id_mesa, $comensales);
+        } elseif ($estado_mesa == 2) {
+            Mesa::crearIncidenciaMesa($onexion, $id_mesa, $desc_inc);
+        } else {
+            redirect('../controller/index_controller.php?error=true');
+        }
+    } elseif ($estado_actual == 1) {
+        if ($estado_mesa == 0) {
+            Mesa::cerrarRegistroMesa($conexion, $id_mesa);
+        } elseif ($estado_mesa == 2) {
+            Mesa::cerrarRegistroMesa($conexion, $id_mesa);
+            Mesa::crearIncidenciaMesa($onexion, $id_mesa, $desc_inc);
+        } else {
+            redirect('../controller/index_controller.php?error=true');
+        }
+    } elseif ($estado_actual == 2) {
+        if ($estado_mesa == 0) {
+            Mesa::cerrarIncidenciaMesa($conexion, $id_mesa);
+        } elseif ($estado_mesa == 1) {
+            
+            Mesa::cerrarIncidenciaMesa($conexion, $id_mesa);
+            Mesa::crearRegistroMesa($onexion, $id_mesa, $comensales);
+        } else {
+            redirect('../controller/index_controller.php?error=true');
+        }
+    } else {
+        redirect('../controller/index_controller.php?error=true');
+    }
+
+// Comprobar que, si están ocupando una mesa, introduzcan el numero de comensales
+// if ($estado_mesa == 1) {
+//     // si num_comensales no está seteado
+//     if (!isset($_GET[BD['REGISTRO']['COMENSALES']])) {
+//         // redirect('../controller/index_controller.php?val=false');
+//         // die();
+        
+//         // SOLO PARA TESTEO, CAMBIAR
+//         $comensales = Mesa::getMaxComensales($conexion, $id_mesa);
+//     }
+
+//     // si num comensales sobrepasa o está por debajo del maximo y minimo
+//     // if (intval($_GET[BD['REGISTRO']['COMENSALES']]) <= 0 || intval($_GET[BD['REGISTRO']['COMENSALES']]) > intval(Mesa::getMaxComensales($conexion, $id_mesa))) {
+//     //     redirect('../controller/index_controller.php?val=false');
+//     //     die();
+//     // }
+
+//     $comensales = $_GET[BD['REGISTRO']['COMENSALES']];
+// } elseif ($estado_mesa = 2 && Mesa::getEstadoMesa($conexion, $id_mesa) != 2) {
+//     // si desc_inc no está seteado
+//     if (!isset($_GET[BD['INCIDENCIA']['NOMBRE']])) {
+//         // redirect('../controller/index_controller.php?val=false');
+//         // die();
+        
+//         // SOLO PARA TESTEO, CAMBIAR
+//         $desc_inc = "";
+//     }
+// }
+
+//llamar a la funcion de mesa
+if (!Mesa::cambiarEstadoMesa($conexion, $id_mesa, $estado_mesa)) {
+    redirect('../controller/index_controller.php?error=true');
+}
+
+
+redirect('../controller/index_controller.php');
