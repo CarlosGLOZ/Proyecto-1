@@ -1,7 +1,7 @@
 function email(url) {
     Swal.fire({
             title: "Campo EMAIL vacio",
-            imageUrl: '../img/imgerror.png',
+            imageUrl: '../static/img/imgerror.png',
             imageWidth: 200,
             imageHeight: 200,
             background: 'white',
@@ -17,7 +17,7 @@ function email(url) {
 function psw(url) {
     Swal.fire({
             title: "Campo PASSWORD vacio",
-            imageUrl: '../img/imgerror.png',
+            imageUrl: '../static/img/imgerror.png',
             imageWidth: 200,
             imageHeight: 200,
             background: 'white',
@@ -35,7 +35,7 @@ function email2(url) {
     Swal.fire({
             title: "Email no válido",
             text:'correo@correo.com',
-            imageUrl: '../img/imgerror.png',
+            imageUrl: '../static/img/imgerror.png',
             imageWidth: 200,
             imageHeight: 200,
             background: 'white',
