@@ -14,7 +14,7 @@ if (!isset($_GET[FILTROS['SALA']])) {
     echo "<script>window.location.href='./index_controller.php?".FILTROS['SALA']."=1'</script>";
 } else {
     $url_raw = getURL();
-    $url_base = explode('?', $url_raw)[0].'?'.FILTROS['SALA']."=1";
+    $url_base = explode('?', $url_raw)[0];
 }
 
 // Recoger filtros

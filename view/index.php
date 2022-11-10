@@ -85,8 +85,8 @@
         ?>
     </select>
 
-    <button onclick="enviarFiltros('<?php echo $url_base;?>', [<?php echo FILTROS['CAPACIDAD'].', '.FILTROS['DISPONIBILIDAD'] ;?>]);">Filtrar</button>
-    <button onclick="limpiarFiltros('<?php echo $url_base;?>');">Limpiar Filtros</button>
+    <button onclick="enviarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>', [<?php echo FILTROS['CAPACIDAD'].', '.FILTROS['DISPONIBILIDAD'] ;?>]);">Filtrar</button>
+    <button onclick="limpiarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>');">Limpiar Filtros</button>
 </div>
 <!-- /Filtros -->
 
@@ -159,17 +159,17 @@
       // Mostrar botones según estado de la mesa
       echo "<div class='text-center github-link'>";
       if ($mesa[BD['MESA']['ESTADO']] == 0) {
-        echo "<button  class='btn btn-success' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
-        echo "<button class='btn btn-secondary' onclick='abrirModalMantenimiento(".$mesa[BD['MESA']['ID']].")'>Mantenimiento</button";
+        echo "<button class='btn btn-success' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
+        echo "<button class='btn btn-secondary' onclick='abrirModalMantenimiento(".$mesa[BD['MESA']['ID']].")'>Mantenimiento</button>";
       } elseif ($mesa[BD['MESA']['ESTADO']] == 1) {
         echo "<button class='btn btn-danger' onclick='abrirModalLiberar(".$mesa[BD['MESA']['ID']].")'>Liberar</button> ";
-        echo "<button class='btn btn-secondary' onclick='abrirModalMantenimiento(".$mesa[BD['MESA']['ID']].")'>Mantenimiento</button";
+        echo "<button class='btn btn-secondary' onclick='abrirModalMantenimiento(".$mesa[BD['MESA']['ID']].")'>Mantenimiento</button>";
       } elseif ($mesa[BD['MESA']['ESTADO']] == 2) {
-        echo "<button  class='btn btn-success' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
+        echo "<button class='btn btn-success' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
         echo "<button class='btn btn-danger' onclick='abrirModalLiberar(".$mesa[BD['MESA']['ID']].")'>Liberar</button>";
       }
       
-      echo "</div></div></div>
+      echo "</div></div>
       ";
 
       $cont++;
