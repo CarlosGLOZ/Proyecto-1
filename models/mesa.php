@@ -198,4 +198,19 @@ class Mesa
 
         return mysqli_query($conexion, $sql);
     }
+
+    public static function getCapacidades($conexion)
+    {
+        $sql = "SELECT ".BD['MESA']['CAPACIDAD']." AS cap FROM ".BD['MESA']['TABLA']." GROUP BY ".BD['MESA']['CAPACIDAD'].";";
+
+        $result = mysqli_query($conexion, $sql);
+        $return = [];
+
+        foreach ($result as $value) {
+            array_push($return, $value['cap']);
+        }
+
+        return $return;
+    }
+
 }

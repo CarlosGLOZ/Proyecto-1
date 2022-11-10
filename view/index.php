@@ -17,6 +17,7 @@
     
 </head>
 <body>
+
   <?php
   if (!$entrada_valida) {
     echo "<script>window.location.href = '../controller/index_controller.php';</script>";
@@ -49,6 +50,45 @@
     </div>
 </nav>
 
+<!-- Filtros -->
+<div id="form-filtros">
+    <select id="<?php echo FILTROS['CAPACIDAD'];?>">
+        <?php
+            foreach ($capacidades as $capacidad) {
+                if (array_key_exists(FILTROS['CAPACIDAD'], $filtros)) {
+                    if ($filtros[FILTROS['CAPACIDAD']] == $capacidad) {
+                        echo "<option selected='selected' value=$capacidad>$capacidad</option>";
+                    } else {
+                        echo "<option value=$capacidad>$capacidad</option>";
+                    }
+                }else {
+                    echo "<option value=$capacidad>$capacidad</option>";
+                }
+            }
+        ?>
+    </select>
+    
+    <select id="<?php echo FILTROS['DISPONIBILIDAD'];?>">
+        <?php
+            foreach (BD['MESA']['ESTADOS'] as $estado) {
+                if (array_key_exists(FILTROS['DISPONIBILIDAD'], $filtros)) {
+                    if ($filtros[FILTROS['DISPONIBILIDAD']] == array_search($estado, BD['MESA']['ESTADOS'])) {
+                        echo "<option selected='selected' value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
+                    } else {
+                        echo "<option value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
+                    }
+                }else {
+                    echo "<option value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
+                }
+            }
+        ?>
+    </select>
+
+    <button onclick="enviarFiltros('<?php echo $url_base;?>', [<?php echo FILTROS['CAPACIDAD'].', '.FILTROS['DISPONIBILIDAD'] ;?>]);">Filtrar</button>
+    <button onclick="limpiarFiltros('<?php echo $url_base;?>');">Limpiar Filtros</button>
+</div>
+<!-- /Filtros -->
+
 <!-- Loop -->
 <div class="region">
   <?php
@@ -65,22 +105,27 @@
 
       echo "
         <div class='bloque'>
-          <a href='registros_controller.php?filtro_mesa=".$mesa[BD['MESA']['ID']]."'><img class='mesa' src='../static/img/mesa".$mesa[BD['MESA']['CAPACIDAD']]."-".COLORES_MESAS[$mesa[BD['MESA']['ESTADO']]].".png'></a>";
-      
+        <h2 class='text-center'>MESA ".$mesa[BD['MESA']['NUMERO']]."</h2>
+                <div class='lightbox-gallery'>
+                    <div class='text-center'>
+                    <a href='registros_controller.php?filtro_mesa=".$mesa[BD['MESA']['ID']]."'><img class='mesa' src='../static/img/mesa".$mesa[BD['MESA']['CAPACIDAD']]."-".COLORES_MESAS[$mesa[BD['MESA']['ESTADO']]].".png'></a>
+                    </div>
+                </div>";
+
       // Mostrar botones según estado de la mesa
-      echo "<div><br><br>";
+      echo "<div class='text-center github-link'>";
       if ($mesa[BD['MESA']['ESTADO']] == 0) {
-        echo "<button  name='button' class='button-form2' name='insesion' type='submit'>Ocupar</button>";
-        // Boton mantenimiento
+        echo "<button  class='btn btn-success' >Ocupar</button> ";
+        echo "<button class='btn btn-secondary' >Mantenimiento</button";
       } elseif ($mesa[BD['MESA']['ESTADO']] == 1) {
-        echo "<button  type='button' onclick='aviso();' class='button-form'>Liberar</button>";
-        // boton mantenimiento
+        echo "<button class='btn btn-danger' >Liberar</button> ";
+        echo "<button class='btn btn-secondary' >Mantenimiento</button";
       } elseif ($mesa[BD['MESA']['ESTADO']] == 2) {
-        echo "<button  name='button' class='button-form2' name='insesion' type='submit'>Ocupar</button>";
-        echo "<button  type='button' onclick='aviso();' class='button-form'>Liberar</button>";
+        echo "<button  class='btn btn-success' >Ocupar</button> ";
+        echo "<button class='btn btn-danger' >Liberar</button>";
       }
       
-      echo "</div></div>
+      echo "</div></div></div>
       ";
 
       $cont++;
@@ -90,5 +135,7 @@
 <!-- /Loop -->
 
 <script src="../static/js/function_logout.js"></script>
+<script src="../static/js/styles.js"></script>
+<script src="../static/js/filtros.js"></script>
 </body>
 </html>
