@@ -11,6 +11,16 @@ $comensales = null;
 $desc_inc = null;
 $estado_actual = Mesa::getEstadoMesa($conexion, $id_mesa);
 
+
+echo($id_mesa);
+echo($estado_mesa);
+echo($comensales);
+echo($comensales);
+echo($desc_inc);
+echo($estado_actual);
+
+// die();
+
 // Validaciones
 
     // Si la mesa no es valida
@@ -63,6 +73,11 @@ $estado_actual = Mesa::getEstadoMesa($conexion, $id_mesa);
         } else {
             redirect('../controller/index_controller.php?error=true');
         }
+
+
+die();
+
+
     } elseif ($estado_actual == 1) {
         if ($estado_mesa == 0) {
             Mesa::cerrarRegistroMesa($conexion, $id_mesa);

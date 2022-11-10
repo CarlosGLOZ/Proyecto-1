@@ -44,11 +44,14 @@
       </ul>
     </div>
     <div class="navbar-nav">
-          <a onclick="aviso3();" class="nav-link bg-light" aria-pressed='true' aria-current="page" role='button'>Log out</a>
-        </div>
+      <a onclick="aviso3();" class="nav-link bg-light" aria-pressed='true' aria-current="page" role='button'>Log out</a>
+    </div>
   </div>
 </nav>
 
+<div id="contenido-comensal" >
+
+</div>
 <!-- Loop -->
 <div class="region">
   <?php
@@ -70,14 +73,19 @@
       // Mostrar botones según estado de la mesa
       echo "<div><br><br>";
       if ($mesa[BD['MESA']['ESTADO']] == 0) {
-        echo "<button  name='button' class='button-form2' name='insesion' type='submit'>Ocupar</button>";
+        echo "<button onclick='comensal(".$mesa[BD['MESA']['ID']].")' name='id_mesa' class='button-form2' name='insesion' type='submit' data-toggle='modal' data-target='#exampleModal'>Ocupar</button>";
         // Boton mantenimiento
+        //echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'> Launch demo modal</button>";
+
+
+
       } elseif ($mesa[BD['MESA']['ESTADO']] == 1) {
         echo "<button  type='button' onclick='aviso();' class='button-form'>Liberar</button>";
+        
         // boton mantenimiento
       } elseif ($mesa[BD['MESA']['ESTADO']] == 2) {
         echo "<button  name='button' class='button-form2' name='insesion' type='submit'>Ocupar</button>";
-        echo "<button  type='button' onclick='aviso();' class='button-form'>Liberar</button>";
+        echo "<button  type='button' onclick='insert_comensales();' class='button-form'>Liberar</button>";
       }
       
       echo "</div></div>
@@ -86,9 +94,37 @@
       $cont++;
     }
   ?>
+
+
+
+<!-- Modal
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
 </div>
 <!-- /Loop -->
 
 <script src="../static/js/function_index.js"></script>
+<script src="../static/js/insert_comensales.js"></script>
+
 </body>
 </html>
