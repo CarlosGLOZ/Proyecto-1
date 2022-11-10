@@ -100,3 +100,10 @@ const FILTROS =
         'filtro_mesa' => 'id_mesa'
     ]
 ];
+
+const COLORES_MESAS = 
+[
+    0 => 'verde',
+    1 => 'rojo',
+    2 => ''
+];

@@ -12,19 +12,27 @@ if (!validar_sesion()) {
 // Recoger filtros
 $filtros = [];
 foreach ($_GET as $key => $value) {
-    if (in_array(explode('_',$key)[0], FILTROS)) { //comprobar que variable esté dentro de los filtros
-        $filtros[$key] = mysqli_real_escape_string(trim(strip_tags($value)));
+    if (in_array($key, FILTROS)) { //comprobar que variable esté dentro de los filtros
+        $filtros[$key] = mysqli_real_escape_string($conexion, trim(strip_tags($value)));
     }
+}
+
+if (!isset($filtros[FILTROS['SALA']])) {
+    $filtros[FILTROS['SALA']] = 1;
 }
 
 $mesas = Mesa::getMesas($conexion, $filtros);
 
 
 // foreach ($mesas as $mesa) {
-//     $mesa[BD['MESA']['ID']];
+//     foreach ($mesa as $key => $value) {
+//         echo "[$key] -> [$value]<br>";
+//     }
+//     echo "<br>";
 // }
+// die();
 
 // Llamar a pagina
 $entrada_valida = true;
 
-require_once '../view/mostrar.php';
+require_once '../view/index.php';

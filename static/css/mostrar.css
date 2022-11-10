@@ -4,87 +4,128 @@
 .mesa{
     height: 20vh;
 }
-
+img{
+  height: 20vh;
+  filter: drop-shadow(0 0 0 red);
+  opacity:(0.4);
+}
 .region{
     width: 100%;
-    height: 45vh;
-
+    height: 40vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    
+}
+.region2{
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
 }
 
-.bloque{
-    width: 25%;
-    height: 100%;
-
+/* .bloque{
+    width: 50%;
+    height: 50%;
     display: flex;
     justify-content: center;
     position: relative;
-}
+} */
+.bloque {
+    max-width: 800px;
+    margin: 5% auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+    width: 33.33%;
+    float: left;
+  }
 
+  .lightbox-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-img:hover{
+  
+  .lightbox-gallery div > img {
+    max-width: 100%;
+    display: block;
+  }
+ 
+  
+  .lightbox-gallery div {
+    margin: 10px;
+    flex-basis: 180px;
+  }
+
+/* .bloque:hover{
     opacity: .4;
     background-color: transparent;
+    
+} */
+.button-form {
+  font-family: "Asap", sans-serif;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  width: 100%;
+  border: 0;
+  padding: 10px 0;
+  margin-top: 10px;
+  margin-left: -5px;
+  border-radius: 5px;
+  background-color: #5d7fec;
+  -webkit-transition: background-color 300ms;
+  -moz-transition: background-color 300ms;
+  transition: background-color 300ms;
+}
+.button-form:hover{
+  background-color: rgb(70, 53, 187);
 }
 
-.button-form {
-    font-family: "Asap", sans-serif;
-    cursor: pointer;
-    color: #fff;
-    font-size: 16px;
-    text-transform: uppercase;
-    width: 100%;
-    border: 0;
-    padding: 10px 0;
-    margin-top: 10px;
-    margin-left: -5px;
-    border-radius: 5px;
-    background-color: #59d459;
-    -webkit-transition: background-color 300ms;
-    -moz-transition: background-color 300ms;
-    transition: background-color 300ms;
-  }
-  .button-form:hover{
-    background-color: rgb(48, 151, 28);
-  }
-
-  .button-form2 {
-    font-family: "Asap", sans-serif;
-    cursor: pointer;
-    color: #fff;
-    font-size: 16px;
-    text-transform: uppercase;
-    width: 100%;
-    border: 0;
-    padding: 10px 0;
-    margin-top: 10px;
-    margin-left: -5px;
-    border-radius: 5px;
-    background-color: #cf4d4d;
-    -webkit-transition: background-color 300ms;
-    -moz-transition: background-color 300ms;
-    transition: background-color 300ms;
-  }
-  .button-form2:hover{
-    background-color: rgb(199, 24, 24);
-  }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1300px) {
     .region {
         width: 100%;
         display: flex;
         flex-flow: wrap;
         justify-content: center;
         align-items: center;
+    }
+    .region2 {
+        width: 100%;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 50%;
     }
     .bloque{
         width: 50%;
     }
-
+    .lightbox-gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contenedor-img{
+        max-width: 100%;
+        height: 100%;
+      }
+      
+      .lightbox > div {
+        margin-bottom: 10px;
+      }
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 700px) {
     .region {
         width: 100%;
         display: flex;
@@ -92,7 +133,39 @@ img:hover{
         justify-content: center;
         align-items: center;
     }
+    .region2 {
+        width: 100%;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 170%;
+    }
     .bloque{
         width: 100%;
     }
+
 }
+
+@media only screen and (max-width: 400px) {
+    .region {
+        width: 100%;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .region2 {
+        width: 100%;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 285%;
+    }
+    .bloque{
+        width: 100%;
+    }
+
+}
+

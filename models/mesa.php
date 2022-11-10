@@ -64,10 +64,12 @@ class Mesa
 
         // aplicar filtros
         foreach ($filtros as $key => $value) {
-            $sql = $sql." AND ".FILTROS['BD'][$key]." = $value";
+            $sql = $sql." AND ".FILTROS['BD'][$key]." = '$value'";
         }
 
         $sql = $sql.";";
+
+        // echo $sql."<br>";
 
         return mysqli_query($conexion, $sql);
     }
