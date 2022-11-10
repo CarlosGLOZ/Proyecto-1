@@ -105,5 +105,5 @@ const COLORES_MESAS =
 [
     0 => 'verde',
     1 => 'rojo',
-    2 => ''
+    2 => 'blanco'
 ];
