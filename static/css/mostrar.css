@@ -9,6 +9,10 @@ img{
   filter: drop-shadow(0 0 0 red);
   opacity:(0.4);
 }
+img:hover{
+    opacity: .4;
+    background-color: transparent;
+}
 .region{
     width: 100%;
     height: 40vh;
@@ -16,6 +20,7 @@ img{
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 1%;
     
 }
 .region2{
@@ -25,16 +30,11 @@ img{
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 1%;
     
 }
 
-/* .bloque{
-    width: 50%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    position: relative;
-} */
+
 .bloque {
     max-width: 800px;
     margin: 5% auto;
@@ -67,12 +67,8 @@ img{
     flex-basis: 180px;
   }
 
-/* .bloque:hover{
-    opacity: .4;
-    background-color: transparent;
-    
-} */
-.button-form {
+
+/* .button-form {
   font-family: "Asap", sans-serif;
   cursor: pointer;
   color: #fff;
@@ -91,7 +87,7 @@ img{
 }
 .button-form:hover{
   background-color: rgb(70, 53, 187);
-}
+} */
 
 @media only screen and (max-width: 1300px) {
     .region {
@@ -140,6 +136,29 @@ img{
         justify-content: center;
         align-items: center;
         padding-top: 170%;
+    }
+    .bloque{
+        width: 100%;
+    }
+
+}
+
+
+@media only screen and (max-width: 420px) {
+    .region {
+        width: 100%;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .region2 {
+        width: 100%;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 247%;
     }
     .bloque{
         width: 100%;
