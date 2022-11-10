@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/mostrar.css">
+    <link rel="stylesheet" href="../static/css/modal_mesas.css">
 
     <title>Mesas</title>
     
@@ -89,6 +90,49 @@
 </div>
 <!-- /Filtros -->
 
+
+<!-- Modal Comensales -->
+<div id="modal-comensales-container" class="modal-container">
+    <div class="modal-box">
+        <form action="../proc/cambiar_estado_mesa.php" method="post">
+            <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_comensales">
+            <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="1">
+            <input type="number" name="<?php echo BD['REGISTRO']['COMENSALES']?>" placeholder='Comensales'>
+            <input type="submit" value="Guardar">
+        </form>
+        <button onclick="cerrarModales()">Cancelar</button>
+    </div>
+</div>
+<!-- /Modal Comensales -->
+
+<!-- Modal Mantenimiento-->
+<div id="modal-mantenimiento-container" class="modal-container">
+    <div class="modal-box">
+        <form action="../proc/cambiar_estado_mesa.php" method="post">
+            <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_mantenimineto">
+            <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="2">
+            <input type="text" name="<?php echo BD['INCIDENCIA']['NOMBRE']?>" placeholder="Descripcion incidencia">
+            <input type="submit" value="Guardar">
+        </form>
+        <button onclick="cerrarModales()">Cancelar</button>
+    </div>
+</div>
+<!-- /Modal Mantenimiento-->
+
+<!-- Modal Liberar-->
+<div id="modal-liberar-container" class="modal-container">
+    <div class="modal-box">
+        <form action="../proc/cambiar_estado_mesa.php" method="post">
+            <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_liberar">
+            <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="0">
+            <p>¿Seguro?</p>
+            <input type="submit" value="Sí">
+        </form>
+        <button onclick="cerrarModales()">Cancelar</button>
+    </div>
+</div>
+<!-- /Modal Liberar-->
+
 <!-- Loop -->
 <div class="region">
   <?php
@@ -108,21 +152,21 @@
         <h2 class='text-center'>MESA ".$mesa[BD['MESA']['NUMERO']]."</h2>
                 <div class='lightbox-gallery'>
                     <div class='text-center'>
-                    <a href='registros_controller.php?filtro_mesa=".$mesa[BD['MESA']['ID']]."'><img class='mesa' src='../static/img/mesa".$mesa[BD['MESA']['CAPACIDAD']]."-".COLORES_MESAS[$mesa[BD['MESA']['ESTADO']]].".png'></a>
+                    <a href='registros_controller.php?filtro_mesa=".$mesa[BD['MESA']['ID']]."'><img class='mesa' src='../static/img/mesa-".$mesa[BD['MESA']['CAPACIDAD']]."-".COLORES_MESAS[$mesa[BD['MESA']['ESTADO']]].".png'></a>
                     </div>
                 </div>";
 
       // Mostrar botones según estado de la mesa
       echo "<div class='text-center github-link'>";
       if ($mesa[BD['MESA']['ESTADO']] == 0) {
-        echo "<button  class='btn btn-success' >Ocupar</button> ";
-        echo "<button class='btn btn-secondary' >Mantenimiento</button";
+        echo "<button  class='btn btn-success' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
+        echo "<button class='btn btn-secondary' onclick='abrirModalMantenimiento(".$mesa[BD['MESA']['ID']].")'>Mantenimiento</button";
       } elseif ($mesa[BD['MESA']['ESTADO']] == 1) {
-        echo "<button class='btn btn-danger' >Liberar</button> ";
-        echo "<button class='btn btn-secondary' >Mantenimiento</button";
+        echo "<button class='btn btn-danger' onclick='abrirModalLiberar(".$mesa[BD['MESA']['ID']].")'>Liberar</button> ";
+        echo "<button class='btn btn-secondary' onclick='abrirModalMantenimiento(".$mesa[BD['MESA']['ID']].")'>Mantenimiento</button";
       } elseif ($mesa[BD['MESA']['ESTADO']] == 2) {
-        echo "<button  class='btn btn-success' >Ocupar</button> ";
-        echo "<button class='btn btn-danger' >Liberar</button>";
+        echo "<button  class='btn btn-success' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
+        echo "<button class='btn btn-danger' onclick='abrirModalLiberar(".$mesa[BD['MESA']['ID']].")'>Liberar</button>";
       }
       
       echo "</div></div></div>
@@ -137,5 +181,6 @@
 <script src="../static/js/function_logout.js"></script>
 <script src="../static/js/styles.js"></script>
 <script src="../static/js/filtros.js"></script>
+<script src="../static/js/modales_mesas.js"></script>
 </body>
 </html>
