@@ -39,7 +39,7 @@
         
         </li>
         <li class="nav-item">
-        <button class="btn btn-outline-success" type="submit">Search</button> 
+        <button class="btn btn-outline-success" type="submit">Buscar</button> 
         </li>
       </ul> 
     </div>

@@ -35,4 +35,4 @@ $mesas = Mesa::getMesas($conexion, $filtros);
 // Llamar a pagina
 $entrada_valida = true;
 
-require_once '../view/registro.php';
+require_once '../view/index.php';
