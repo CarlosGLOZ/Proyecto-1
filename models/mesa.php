@@ -192,4 +192,10 @@ class Mesa
         return true;
     }
 
+    public static function getSalas($conexion)
+    {
+        $sql = "SELECT * FROM ".BD['SALA']['TABLA'].";";
+
+        return mysqli_query($conexion, $sql);
+    }
 }
