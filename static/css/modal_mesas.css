@@ -1,34 +1,34 @@
 .modal-container {
-    display: none;
-    top: -20vh;
-    z-index: 99;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: translate(35%, 55%);
+  display: none;
+  top: -20vh;
+  z-index: 99;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
-
 .modal-container .modal-box {
-    width: 30%;
-    height: 30%;
-    background-color: #D0D5FB;
-    border-width: 2px;
-    border-radius: 10px;
-    border-style: solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  width: 30%;
+  height: 40%;
+  background-color: #d0d5fb9f;
+  border-width: 2px;
+  border-radius: 20px;
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  backdrop-filter: blur(4px);
+  margin-top: 10%;
 }
-
 .modal-container .modal-box form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-
 .modal-container .modal-box form * {
-    margin-top: 2%;
-    margin-bottom: 2%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }

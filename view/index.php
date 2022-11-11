@@ -50,7 +50,18 @@
         </div>
     </div>
 </nav>
-
+<div class="area" >
+    <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
 <!-- Filtros -->
 <div id="form-filtros">
     <select id="<?php echo FILTROS['CAPACIDAD'];?>">
@@ -85,8 +96,8 @@
         ?>
     </select>
 
-    <button onclick="enviarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>', [<?php echo FILTROS['CAPACIDAD'].', '.FILTROS['DISPONIBILIDAD'] ;?>]);">Filtrar</button>
-    <button onclick="limpiarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>');">Limpiar Filtros</button>
+    <button class="btn btn-success" onclick="enviarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>', [<?php echo FILTROS['CAPACIDAD'].', '.FILTROS['DISPONIBILIDAD'] ;?>]);">Filtrar</button>
+    <button class="btn btn-danger" onclick="limpiarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>');">Limpiar Filtros</button>
 </div>
 <!-- /Filtros -->
 
@@ -95,12 +106,13 @@
 <div id="modal-comensales-container" class="modal-container">
     <div class="modal-box">
         <form action="../proc/cambiar_estado_mesa.php" method="post">
+            <h3 style="text-align: center">Introduce los comensales:</h3>
             <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_comensales">
             <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="1">
             <input type="number" name="<?php echo BD['REGISTRO']['COMENSALES']?>" placeholder='Comensales'>
-            <input type="submit" value="Guardar">
+            <input type="submit" class="btn btn-success" value="Guardar">
         </form>
-        <button onclick="cerrarModales()">Cancelar</button>
+        <button class="btn btn-danger" onclick="cerrarModales()">Cancelar</button>
     </div>
 </div>
 <!-- /Modal Comensales -->
@@ -177,7 +189,8 @@
   ?>
 </div>
 <!-- /Loop -->
-
+</ul> 
+             </div>
 <script src="../static/js/function_logout.js"></script>
 <script src="../static/js/styles.js"></script>
 <script src="../static/js/filtros.js"></script>
