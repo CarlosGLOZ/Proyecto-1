@@ -5,21 +5,12 @@ require_once '../models/mesa.php';
 require_once 'func.php';
 //No hacemos require de config porque ya lo contiene conexion.php
 
-$id_mesa = $_GET[BD['MESA']['ID']]; //Recupera el valor del id dentro de la const mesa 
-$estado_mesa = $_GET[BD['MESA']['ESTADO']];
+$id_mesa = $_POST[BD['MESA']['ID']]; //Recupera el valor del id dentro de la const mesa 
+$estado_mesa = $_POST[BD['MESA']['ESTADO']];
 $comensales = null;
 $desc_inc = null;
 $estado_actual = Mesa::getEstadoMesa($conexion, $id_mesa);
 
-
-echo($id_mesa);
-echo($estado_mesa);
-echo($comensales);
-echo($comensales);
-echo($desc_inc);
-echo($estado_actual);
-
-// die();
 
 // Validaciones
 
@@ -27,11 +18,12 @@ echo($estado_actual);
     if (!Mesa::mesaExiste($conexion, $id_mesa)) {
         redirect('../controller/index_controller.php?error=true');
     } 
-
+    
     // Si el estado no es valido
-    if (!in_array($estado_mesa, BD['MESA']['ESTADOS'])) {
+    if (!array_key_exists($estado_mesa, BD['MESA']['ESTADOS'])) {
         redirect('../controller/index_controller.php?error=true');
     }
+    // die();
     
     // Si el estado de la mesa es el mismo, devolver a index
     if ($estado_mesa == $estado_actual) {
@@ -41,26 +33,26 @@ echo($estado_actual);
     if ($estado_mesa == 1) {
 
         // Si el estado es ocupado y no esta seteado el valor de comensales o es un valor invalido
-        if (!isset($_GET[BD['REGISTRO']['COMENSALES']])) {
+        if (!isset($_POST[BD['REGISTRO']['COMENSALES']])) {
             redirect('../controller/index_controller.php?error=true');
         }
-        if (!Mesa::validarComensales($conexion, $id_mesa, $_GET[BD['REGISTRO']['COMENSALES']])) {
+        if (!Mesa::validarComensales($conexion, $id_mesa, $_POST[BD['REGISTRO']['COMENSALES']])) {
             redirect('../controller/index_controller.php?error=true');
         } 
 
-        $comensales = $_GET[BD['REGISTRO']['COMENSALES']];
+        $comensales = $_POST[BD['REGISTRO']['COMENSALES']];
     } elseif ($estado_mesa == 2) {
         
         // Si el estado es incidencia y no está seteado el valor de desc_inc
-        if (!isset($_GET[BD['INCIDENCIA']['NOMBRE']])) {
+        if (!isset($_POST[BD['INCIDENCIA']['NOMBRE']])) {
             redirect('../controller/index_controller.php?error=true');
         } 
         
-        if (trim(strip_tags($_GET[BD['INCIDENCIA']['NOMBRE']])) == '') {
+        if (trim(strip_tags($_POST[BD['INCIDENCIA']['NOMBRE']])) == '') {
             redirect('../controller/index_controller.php?error=true');
         }
 
-        $desc_inc = trim(strip_tags($_GET[BD['INCIDENCIA']['NOMBRE']]));
+        $desc_inc = trim(strip_tags($_POST[BD['INCIDENCIA']['NOMBRE']]));
 
     }
 
@@ -73,11 +65,6 @@ echo($estado_actual);
         } else {
             redirect('../controller/index_controller.php?error=true');
         }
-
-
-die();
-
-
     } elseif ($estado_actual == 1) {
         if ($estado_mesa == 0) {
             Mesa::cerrarRegistroMesa($conexion, $id_mesa);

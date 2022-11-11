@@ -12,11 +12,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/mostrar.css">
+    <link rel="stylesheet" href="../static/css/modal_mesas.css">
 
-    <title>Document</title>
+    <title>Mesas</title>
     
 </head>
 <body>
+
   <?php
   if (!$entrada_valida) {
     echo "<script>window.location.href = '../controller/index_controller.php';</script>";
@@ -25,33 +27,112 @@
 
   <script src="../static/js/function_logout.js"></script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img class="foto" src="../static/img/logores.png" alt=""></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="?<?php echo FILTROS['SALA']?>=1">Principal</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?<?php echo FILTROS['SALA']?>=2">Comedor</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?<?php echo FILTROS['SALA']?>=3">Privada</a>
-        </li>
-      </ul>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img class="foto" src="../static/img/logores.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <?php
+                    foreach (Mesa::getSalas($conexion) as $sala) {
+                        echo "
+                        <li class='nav-item'>
+                            <a class='nav-link active' href='?".FILTROS['SALA']."=".$sala[BD['SALA']['ID']]."'>".explode(' - ', $sala[BD['SALA']['NOMBRE']])[0]."</a>
+                        </li>
+                        ";
+                    }
+                ?>
+            </ul>
+        </div>
+        <div class="navbar-nav">
+            <a onclick="aviso3();" class="nav-link bg-light" aria-pressed='true' aria-current="page" role='button'>Log out</a>
+        </div>
     </div>
-    <div class="navbar-nav">
-      <a onclick="aviso3();" class="nav-link bg-light" aria-pressed='true' aria-current="page" role='button'>Log out</a>
-    </div>
-  </div>
 </nav>
 
-<div id="contenido-comensal" >
+<!-- Filtros -->
+<div id="form-filtros">
+    <select id="<?php echo FILTROS['CAPACIDAD'];?>">
+        <?php
+            foreach ($capacidades as $capacidad) {
+                if (array_key_exists(FILTROS['CAPACIDAD'], $filtros)) {
+                    if ($filtros[FILTROS['CAPACIDAD']] == $capacidad) {
+                        echo "<option selected='selected' value=$capacidad>$capacidad</option>";
+                    } else {
+                        echo "<option value=$capacidad>$capacidad</option>";
+                    }
+                }else {
+                    echo "<option value=$capacidad>$capacidad</option>";
+                }
+            }
+        ?>
+    </select>
+    
+    <select id="<?php echo FILTROS['DISPONIBILIDAD'];?>">
+        <?php
+            foreach (BD['MESA']['ESTADOS'] as $estado) {
+                if (array_key_exists(FILTROS['DISPONIBILIDAD'], $filtros)) {
+                    if ($filtros[FILTROS['DISPONIBILIDAD']] == array_search($estado, BD['MESA']['ESTADOS'])) {
+                        echo "<option selected='selected' value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
+                    } else {
+                        echo "<option value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
+                    }
+                }else {
+                    echo "<option value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
+                }
+            }
+        ?>
+    </select>
 
+    <button onclick="enviarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>', [<?php echo FILTROS['CAPACIDAD'].', '.FILTROS['DISPONIBILIDAD'] ;?>]);">Filtrar</button>
+    <button onclick="limpiarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>');">Limpiar Filtros</button>
 </div>
+<!-- /Filtros -->
+
+
+<!-- Modal Comensales -->
+<div id="modal-comensales-container" class="modal-container">
+    <div class="modal-box">
+        <form action="../proc/cambiar_estado_mesa.php" method="post">
+            <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_comensales">
+            <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="1">
+            <input type="number" name="<?php echo BD['REGISTRO']['COMENSALES']?>" placeholder='Comensales'>
+            <input type="submit" value="Guardar">
+        </form>
+        <button onclick="cerrarModales()">Cancelar</button>
+    </div>
+</div>
+<!-- /Modal Comensales -->
+
+<!-- Modal Mantenimiento-->
+<div id="modal-mantenimiento-container" class="modal-container">
+    <div class="modal-box">
+        <form action="../proc/cambiar_estado_mesa.php" method="post">
+            <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_mantenimineto">
+            <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="2">
+            <input type="text" name="<?php echo BD['INCIDENCIA']['NOMBRE']?>" placeholder="Descripcion incidencia">
+            <input type="submit" value="Guardar">
+        </form>
+        <button onclick="cerrarModales()">Cancelar</button>
+    </div>
+</div>
+<!-- /Modal Mantenimiento-->
+
+<!-- Modal Liberar-->
+<div id="modal-liberar-container" class="modal-container">
+    <div class="modal-box">
+        <form action="../proc/cambiar_estado_mesa.php" method="post">
+            <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_liberar">
+            <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="0">
+            <p>¿Seguro?</p>
+            <input type="submit" value="Sí">
+        </form>
+        <button onclick="cerrarModales()">Cancelar</button>
+    </div>
+</div>
+<!-- /Modal Liberar-->
+
 <!-- Loop -->
 <div class="region">
   <?php
@@ -68,24 +149,24 @@
 
       echo "
         <div class='bloque'>
-          <a href='registros_controller.php?filtro_mesa=".$mesa[BD['MESA']['ID']]."'><img class='mesa' src='../static/img/mesa".$mesa[BD['MESA']['CAPACIDAD']]."-".COLORES_MESAS[$mesa[BD['MESA']['ESTADO']]].".png'></a>";
-      
+        <h2 class='text-center'>MESA ".$mesa[BD['MESA']['NUMERO']]."</h2>
+                <div class='lightbox-gallery'>
+                    <div class='text-center'>
+                    <a href='registros_controller.php?filtro_mesa=".$mesa[BD['MESA']['ID']]."'><img class='mesa' src='../static/img/mesa-".$mesa[BD['MESA']['CAPACIDAD']]."-".COLORES_MESAS[$mesa[BD['MESA']['ESTADO']]].".png'></a>
+                    </div>
+                </div>";
+
       // Mostrar botones según estado de la mesa
-      echo "<div><br><br>";
+      echo "<div class='text-center github-link'>";
       if ($mesa[BD['MESA']['ESTADO']] == 0) {
-        echo "<button onclick='comensal(".$mesa[BD['MESA']['ID']].")' name='id_mesa' class='button-form2' name='insesion' type='submit' data-toggle='modal' data-target='#exampleModal'>Ocupar</button>";
-        // Boton mantenimiento
-        //echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'> Launch demo modal</button>";
-
-
-
+        echo "<button class='btn btn-success' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
+        echo "<button class='btn btn-secondary' onclick='abrirModalMantenimiento(".$mesa[BD['MESA']['ID']].")'>Mantenimiento</button>";
       } elseif ($mesa[BD['MESA']['ESTADO']] == 1) {
-        echo "<button  type='button' onclick='aviso();' class='button-form'>Liberar</button>";
-        
-        // boton mantenimiento
+        echo "<button class='btn btn-danger' onclick='abrirModalLiberar(".$mesa[BD['MESA']['ID']].")'>Liberar</button> ";
+        echo "<button class='btn btn-secondary' onclick='abrirModalMantenimiento(".$mesa[BD['MESA']['ID']].")'>Mantenimiento</button>";
       } elseif ($mesa[BD['MESA']['ESTADO']] == 2) {
-        echo "<button  name='button' class='button-form2' name='insesion' type='submit'>Ocupar</button>";
-        echo "<button  type='button' onclick='insert_comensales();' class='button-form'>Liberar</button>";
+        echo "<button class='btn btn-success' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
+        echo "<button class='btn btn-danger' onclick='abrirModalLiberar(".$mesa[BD['MESA']['ID']].")'>Liberar</button>";
       }
       
       echo "</div></div>
@@ -94,37 +175,12 @@
       $cont++;
     }
   ?>
-
-
-
-<!-- Modal
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
 </div>
 <!-- /Loop -->
 
-<script src="../static/js/function_index.js"></script>
-<script src="../static/js/insert_comensales.js"></script>
-
+<script src="../static/js/function_logout.js"></script>
+<script src="../static/js/styles.js"></script>
+<script src="../static/js/filtros.js"></script>
+<script src="../static/js/modales_mesas.js"></script>
 </body>
 </html>
