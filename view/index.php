@@ -109,10 +109,10 @@
             <h3 style="text-align: center">Introduce los comensales:</h3>
             <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_comensales">
             <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="1">
-            <input type="number" name="<?php echo BD['REGISTRO']['COMENSALES']?>" placeholder='Comensales'>
-            <input type="submit" class="btn btn-success" value="Guardar">
+            <input type="number" name="<?php echo BD['REGISTRO']['COMENSALES']?>" placeholder='Comensales' style="width:50%" max="10" min="1">
+            <input type="submit" class="btn btn-outline-success" value="Guardar">
         </form>
-        <button class="btn btn-danger" onclick="cerrarModales()">Cancelar</button>
+        <button class="btn btn-outline-danger" onclick="cerrarModales()">Cancelar</button>
     </div>
 </div>
 <!-- /Modal Comensales -->
@@ -121,12 +121,13 @@
 <div id="modal-mantenimiento-container" class="modal-container">
     <div class="modal-box">
         <form action="../proc/cambiar_estado_mesa.php" method="post">
+        <h3 style="text-align: center">Introduce el motivo de la incidencia:</h3>
             <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_mantenimineto">
             <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="2">
             <input type="text" name="<?php echo BD['INCIDENCIA']['NOMBRE']?>" placeholder="Descripcion incidencia">
-            <input type="submit" value="Guardar">
+            <input type="submit" class="btn btn-outline-success" value="Guardar">
         </form>
-        <button onclick="cerrarModales()">Cancelar</button>
+        <button class="btn btn-outline-danger" onclick="cerrarModales()">Cancelar</button>
     </div>
 </div>
 <!-- /Modal Mantenimiento-->
@@ -137,10 +138,10 @@
         <form action="../proc/cambiar_estado_mesa.php" method="post">
             <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_liberar">
             <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="0">
-            <p>¿Seguro?</p>
-            <input type="submit" value="Sí">
+            <h3 style="text-align: center">¿Estás seguro?</h3>
+            <input type="submit" class="btn btn-outline-success" value="Sí">
         </form>
-        <button onclick="cerrarModales()">Cancelar</button>
+        <button class="btn btn-outline-danger" onclick="cerrarModales()">Cancelar</button>
     </div>
 </div>
 <!-- /Modal Liberar-->
@@ -171,14 +172,14 @@
       // Mostrar botones según estado de la mesa
       echo "<div class='text-center github-link'>";
       if ($mesa[BD['MESA']['ESTADO']] == 0) {
-        echo "<button class='btn btn-success' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
+        echo "<button class='btn btn-danger' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
         echo "<button class='btn btn-secondary' onclick='abrirModalMantenimiento(".$mesa[BD['MESA']['ID']].")'>Mantenimiento</button>";
       } elseif ($mesa[BD['MESA']['ESTADO']] == 1) {
-        echo "<button class='btn btn-danger' onclick='abrirModalLiberar(".$mesa[BD['MESA']['ID']].")'>Liberar</button> ";
+        echo "<button class='btn btn-success' onclick='abrirModalLiberar(".$mesa[BD['MESA']['ID']].")'>Liberar</button> ";
         echo "<button class='btn btn-secondary' onclick='abrirModalMantenimiento(".$mesa[BD['MESA']['ID']].")'>Mantenimiento</button>";
       } elseif ($mesa[BD['MESA']['ESTADO']] == 2) {
-        echo "<button class='btn btn-success' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
-        echo "<button class='btn btn-danger' onclick='abrirModalLiberar(".$mesa[BD['MESA']['ID']].")'>Liberar</button>";
+        echo "<button class='btn btn-danger' onclick='abrirModalOcupado(".$mesa[BD['MESA']['ID']].")'>Ocupar</button> ";
+        echo "<button class='btn btn-success' onclick='abrirModalLiberar(".$mesa[BD['MESA']['ID']].")'>Liberar</button>";
       }
       
       echo "</div></div>

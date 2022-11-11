@@ -15,11 +15,12 @@
   border-width: 2px;
   border-radius: 20px;
   border-style: solid;
+  border-color: #bac1fadc;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(20px);
   margin-top: 10%;
 }
 .modal-container .modal-box form {
@@ -31,4 +32,8 @@
 .modal-container .modal-box form * {
   margin-top: 2%;
   margin-bottom: 2%;
+}
+.modal-container .modal-box form input {
+  border-radius: 5px;
+  border-width: 1px;
 }
