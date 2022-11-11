@@ -8,10 +8,21 @@ if (!validar_sesion()) {
     redirect('login_controller.php?val=false');
 }
 
-// Validar que mesa está seteado y que es una mesa valida
+// Generar url base para filtros
+if (!isset($_GET[FILTROS['MESA']])) {
+    echo "<script>window.location.href='./registros_controller.php?".FILTROS['MESA']."=1'</script>";
+} else {
+    $url_raw = getURL();
+    $url_base = explode('?', $url_raw)[0];
+}
 
-if (!isset($_GET['filtro_mesa']) || !Mesa::mesaExiste($conexion, $_GET['filtro_mesa'])) {
-    redirect('index_controller.php');
+// Comprobar si hay algun get vacío
+if (hayGetsVacios()) {
+    // Generamos una URL sin las variables GET vacías para hacerlo más limpio
+    $nueva_url = eliminarVariablesGetVacias();
+    // echo $nueva_url;
+    echo "<script>window.location.href = '$nueva_url';</script>";
+    exit();
 }
 
 // Recoger filtros
@@ -25,6 +36,8 @@ foreach ($_GET as $key => $value) {
 // Recoger registros
 $registros = Mesa::getRegistros($conexion, $filtros);
 
+$mesas = Mesa::getMesas($conexion, [], BD['MESA']['NUMERO']);
+
 // Llamar a pagina
 $entrada_valida = true;
-require_once '../view/registros.php';
+require_once '../view/registro.php';

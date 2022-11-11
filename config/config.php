@@ -91,13 +91,15 @@ const FILTROS =
 
     // Registros
     'MESA' => 'filtro_mesa',
+    'COMENSALES' => 'filtro_comensales',
 
     'BD' => // nombres de los filtros en la base de datos
     [
         'filtro_sala' => 'fk_num_sala',
         'filtro_capacidad' => 'capacidad_mesa',
         'filtro_disponibilidad' => 'estado_mesa',
-        'filtro_mesa' => 'id_mesa'
+        'filtro_mesa' => 'id_mesa',
+        'filtro_comensales' => 'num_comensales'
     ]
 ];
 
@@ -105,5 +107,5 @@ const COLORES_MESAS =
 [
     0 => 'verde',
     1 => 'rojo',
-    2 => ''
+    2 => 'blanco'
 ];

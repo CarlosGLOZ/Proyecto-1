@@ -1,0 +1,39 @@
+.modal-container {
+  display: none;
+  top: -20vh;
+  z-index: 99;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.modal-container .modal-box {
+  width: 30%;
+  height: 40%;
+  background-color: #d0d5fb9f;
+  border-width: 2px;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #bac1fadc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  backdrop-filter: blur(20px);
+  margin-top: 10%;
+}
+.modal-container .modal-box form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.modal-container .modal-box form * {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.modal-container .modal-box form input {
+  border-radius: 5px;
+  border-width: 1px;
+}

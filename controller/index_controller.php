@@ -9,6 +9,14 @@ if (!validar_sesion()) {
     redirect('login_controller.php?val=false');
 }
 
+// Generar url base para filtros
+if (!isset($_GET[FILTROS['SALA']])) {
+    echo "<script>window.location.href='./index_controller.php?".FILTROS['SALA']."=1'</script>";
+} else {
+    $url_raw = getURL();
+    $url_base = explode('?', $url_raw)[0];
+}
+
 // Recoger filtros
 $filtros = [];
 foreach ($_GET as $key => $value) {
@@ -17,12 +25,8 @@ foreach ($_GET as $key => $value) {
     }
 }
 
-if (!isset($filtros[FILTROS['SALA']])) {
-    $filtros[FILTROS['SALA']] = 1;
-}
-
 $mesas = Mesa::getMesas($conexion, $filtros);
-
+$capacidades = Mesa::getCapacidades($conexion);
 
 // foreach ($mesas as $mesa) {
 //     foreach ($mesa as $key => $value) {

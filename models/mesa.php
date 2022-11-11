@@ -57,10 +57,10 @@ class Mesa
         }
 
     // Metodos
-    public static function getMesas($conexion, $filtros)
+    public static function getMesas($conexion, $filtros=[], $campo='*')
     {
         // Recoger todas las mesas
-        $sql = "SELECT * FROM ".BD['MESA']['TABLA']." WHERE 1=1";
+        $sql = "SELECT $campo FROM ".BD['MESA']['TABLA']." WHERE 1=1";
 
         // aplicar filtros
         foreach ($filtros as $key => $value) {
@@ -68,8 +68,6 @@ class Mesa
         }
 
         $sql = $sql.";";
-
-        // echo $sql."<br>";
 
         return mysqli_query($conexion, $sql);
     }
@@ -84,7 +82,7 @@ class Mesa
             $sql = $sql." AND ".FILTROS['BD'][$key]." = $value";
         }
 
-        $sql = $sql.";";
+        $sql = $sql." ORDER BY ".BD['REGISTRO']['ID']." DESC;";
 
         return mysqli_query($conexion, $sql);
     }
@@ -190,6 +188,27 @@ class Mesa
             return false;
         }
         return true;
+    }
+
+    public static function getSalas($conexion)
+    {
+        $sql = "SELECT * FROM ".BD['SALA']['TABLA'].";";
+
+        return mysqli_query($conexion, $sql);
+    }
+
+    public static function getCapacidades($conexion)
+    {
+        $sql = "SELECT ".BD['MESA']['CAPACIDAD']." AS cap FROM ".BD['MESA']['TABLA']." GROUP BY ".BD['MESA']['CAPACIDAD'].";";
+
+        $result = mysqli_query($conexion, $sql);
+        $return = [];
+
+        foreach ($result as $value) {
+            array_push($return, $value['cap']);
+        }
+
+        return $return;
     }
 
 }
