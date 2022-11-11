@@ -119,12 +119,13 @@
 <div id="modal-comensales-container" class="modal-container">
     <div class="modal-box">
         <form action="../proc/cambiar_estado_mesa.php" method="post">
+            <h3 style="text-align: center">Introduce los comensales:</h3>
             <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_comensales">
             <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="1">
-            <input type="number" name="<?php echo BD['REGISTRO']['COMENSALES']?>" placeholder='Comensales'>
-            <input type="submit" value="Guardar">
+            <input type="number" name="<?php echo BD['REGISTRO']['COMENSALES']?>" placeholder='Comensales' style="width:50%" max="10" min="1">
+            <input type="submit" class="btn btn-outline-success" value="Guardar">
         </form>
-        <button onclick="cerrarModales()">Cancelar</button>
+        <button class="btn btn-outline-danger" onclick="cerrarModales()">Cancelar</button>
     </div>
 </div>
 <!-- /Modal Comensales -->
@@ -133,12 +134,13 @@
 <div id="modal-mantenimiento-container" class="modal-container">
     <div class="modal-box">
         <form action="../proc/cambiar_estado_mesa.php" method="post">
+        <h3 style="text-align: center">Introduce el motivo de la incidencia:</h3>
             <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_mantenimineto">
             <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="2">
             <input type="text" name="<?php echo BD['INCIDENCIA']['NOMBRE']?>" placeholder="Descripcion incidencia">
-            <input type="submit" value="Guardar">
+            <input type="submit" class="btn btn-outline-success" value="Guardar">
         </form>
-        <button onclick="cerrarModales()">Cancelar</button>
+        <button class="btn btn-outline-danger" onclick="cerrarModales()">Cancelar</button>
     </div>
 </div>
 <!-- /Modal Mantenimiento-->
@@ -149,10 +151,10 @@
         <form action="../proc/cambiar_estado_mesa.php" method="post">
             <input type="hidden" name="<?php echo BD['MESA']['ID']?>" id="id_mesa_modal_liberar">
             <input type="hidden" name="<?php echo BD['MESA']['ESTADO']?>" value="0">
-            <p>¿Seguro?</p>
-            <input type="submit" value="Sí">
+            <h3 style="text-align: center">¿Estás seguro?</h3>
+            <input type="submit" class="btn btn-outline-success" value="Sí">
         </form>
-        <button onclick="cerrarModales()">Cancelar</button>
+        <button class="btn btn-outline-danger" onclick="cerrarModales()">Cancelar</button>
     </div>
 </div>
 <!-- /Modal Liberar-->
