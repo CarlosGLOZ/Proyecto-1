@@ -84,7 +84,7 @@ class Mesa
             $sql = $sql." AND ".FILTROS['BD'][$key]." = $value";
         }
 
-        $sql = $sql.";";
+        $sql = $sql." ORDER BY ".BD['REGISTRO']['ID']." DESC;";
 
         return mysqli_query($conexion, $sql);
     }
