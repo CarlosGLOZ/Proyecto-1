@@ -57,10 +57,10 @@ class Mesa
         }
 
     // Metodos
-    public static function getMesas($conexion, $filtros)
+    public static function getMesas($conexion, $filtros=[], $campo='*')
     {
         // Recoger todas las mesas
-        $sql = "SELECT * FROM ".BD['MESA']['TABLA']." WHERE 1=1";
+        $sql = "SELECT $campo FROM ".BD['MESA']['TABLA']." WHERE 1=1";
 
         // aplicar filtros
         foreach ($filtros as $key => $value) {
@@ -68,8 +68,6 @@ class Mesa
         }
 
         $sql = $sql.";";
-
-        // echo $sql."<br>";
 
         return mysqli_query($conexion, $sql);
     }

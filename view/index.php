@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/mostrar.css">
     <link rel="stylesheet" href="../static/css/modal_mesas.css">
+    <link rel="stylesheet" href="../static/css/filtros.css">
 
     <title>Mesas</title>
     
@@ -38,7 +39,7 @@
                     foreach (Mesa::getSalas($conexion) as $sala) {
                         echo "
                         <li class='nav-item'>
-                            <a class='nav-link active' href='?".FILTROS['SALA']."=".$sala[BD['SALA']['ID']]."'>".explode(' - ', $sala[BD['SALA']['NOMBRE']])[0]."</a>
+                            <a class='nav-link' href='?".FILTROS['SALA']."=".$sala[BD['SALA']['ID']]."'>".explode(' - ', $sala[BD['SALA']['NOMBRE']])[0]."</a>
                         </li>
                         ";
                     }
@@ -50,43 +51,66 @@
         </div>
     </div>
 </nav>
+<div class="area" >
+    <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
 
 <!-- Filtros -->
-<div id="form-filtros">
-    <select id="<?php echo FILTROS['CAPACIDAD'];?>">
-        <?php
-            foreach ($capacidades as $capacidad) {
-                if (array_key_exists(FILTROS['CAPACIDAD'], $filtros)) {
-                    if ($filtros[FILTROS['CAPACIDAD']] == $capacidad) {
-                        echo "<option selected='selected' value=$capacidad>$capacidad</option>";
-                    } else {
-                        echo "<option value=$capacidad>$capacidad</option>";
+<br>
+<div id="filtros-container" class="navbar-nav">
+    <div id="form-filtros">
+        <div class="nav-item">
+            <select class="form-select form-select-md" id="<?php echo FILTROS['CAPACIDAD'];?>">
+                <?php
+                    foreach ($capacidades as $capacidad) {
+                        if (array_key_exists(FILTROS['CAPACIDAD'], $filtros)) {
+                            if ($filtros[FILTROS['CAPACIDAD']] == $capacidad) {
+                                echo "<option selected='selected' value=$capacidad>$capacidad</option>";
+                            } else {
+                                echo "<option value=$capacidad>$capacidad</option>";
+                            }
+                        }else {
+                            echo "<option value=$capacidad>$capacidad</option>";
+                        }
                     }
-                }else {
-                    echo "<option value=$capacidad>$capacidad</option>";
-                }
-            }
-        ?>
-    </select>
-    
-    <select id="<?php echo FILTROS['DISPONIBILIDAD'];?>">
-        <?php
-            foreach (BD['MESA']['ESTADOS'] as $estado) {
-                if (array_key_exists(FILTROS['DISPONIBILIDAD'], $filtros)) {
-                    if ($filtros[FILTROS['DISPONIBILIDAD']] == array_search($estado, BD['MESA']['ESTADOS'])) {
-                        echo "<option selected='selected' value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
-                    } else {
-                        echo "<option value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
+                ?>
+            </select>
+        </div>
+        
+        <div class="nav-item">
+            <select class="form-select form-select-md" id="<?php echo FILTROS['DISPONIBILIDAD'];?>">
+                <?php
+                    foreach (BD['MESA']['ESTADOS'] as $estado) {
+                        if (array_key_exists(FILTROS['DISPONIBILIDAD'], $filtros)) {
+                            if ($filtros[FILTROS['DISPONIBILIDAD']] == array_search($estado, BD['MESA']['ESTADOS'])) {
+                                echo "<option selected='selected' value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
+                            } else {
+                                echo "<option value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
+                            }
+                        }else {
+                            echo "<option value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
+                        }
                     }
-                }else {
-                    echo "<option value=".array_search($estado, BD['MESA']['ESTADOS']).">$estado</option>";
-                }
-            }
-        ?>
-    </select>
+                ?>
+            </select>
+        </div>
 
-    <button onclick="enviarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>', [<?php echo FILTROS['CAPACIDAD'].', '.FILTROS['DISPONIBILIDAD'] ;?>]);">Filtrar</button>
-    <button onclick="limpiarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>');">Limpiar Filtros</button>
+        <input type="hidden" id="<?php echo FILTROS['SALA'];?>" value="<?php echo $filtros[FILTROS['SALA']]?>">
+        
+        <div class="nav-item">
+            <button class="btn btn-success" onclick="enviarFiltros('<?php echo $url_base;?>', [<?php echo FILTROS['SALA'].', '.FILTROS['CAPACIDAD'].', '.FILTROS['DISPONIBILIDAD'];?>]);">Filtrar</button>
+            <button class="btn btn-danger" onclick="limpiarFiltros('<?php echo $url_base.'?'.FILTROS['SALA'].'='.$filtros[FILTROS['SALA']];?>');">Limpiar Filtros</button>
+        </div>
+    </div>
 </div>
 <!-- /Filtros -->
 
@@ -177,7 +201,8 @@
   ?>
 </div>
 <!-- /Loop -->
-
+</ul> 
+             </div>
 <script src="../static/js/function_logout.js"></script>
 <script src="../static/js/styles.js"></script>
 <script src="../static/js/filtros.js"></script>
