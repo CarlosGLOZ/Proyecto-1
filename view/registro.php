@@ -26,6 +26,7 @@
           <li class="nav-item">
           <form>
             <select class="form-select form-select-md" aria-label=".form-select-sm example" id="<?php echo FILTROS['MESA'];?>">
+            <option value=''>-</option>
                 <?php
                   foreach ($mesas as $mesa) {
                     if (array_key_exists(FILTROS['MESA'], $filtros)) {
@@ -49,7 +50,7 @@
         </li>
         <li class="nav-item">
           <button class="btn btn-outline-success" onclick="enviarFiltros('<?php echo $url_base;?>', [<?php echo FILTROS['MESA'].', '.FILTROS['COMENSALES'] ;?>]);">Filtrar</button>
-          <button class="btn btn-outline-danger" onclick="limpiarFiltros('<?php echo $url_base.'?'.FILTROS['MESA'].'='.$filtros[FILTROS['MESA']];;?>');">Limpiar Filtros</button>
+          <button class="btn btn-outline-danger" onclick="limpiarFiltros('<?php echo $url_base;?>');">Limpiar Filtros</button>
         </li>
       </ul> 
     </div>

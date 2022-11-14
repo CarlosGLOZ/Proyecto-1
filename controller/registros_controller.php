@@ -9,12 +9,8 @@ if (!validar_sesion()) {
 }
 
 // Generar url base para filtros
-if (!isset($_GET[FILTROS['MESA']])) {
-    echo "<script>window.location.href='./registros_controller.php?".FILTROS['MESA']."=1'</script>";
-} else {
-    $url_raw = getURL();
-    $url_base = explode('?', $url_raw)[0];
-}
+$url_raw = getURL();
+$url_base = explode('?', $url_raw)[0];
 
 // Comprobar si hay algun get vacío
 if (hayGetsVacios()) {
