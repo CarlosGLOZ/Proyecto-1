@@ -17,6 +17,15 @@ if (!isset($_GET[FILTROS['SALA']])) {
     $url_base = explode('?', $url_raw)[0];
 }
 
+// Comprobar si hay algun get vacío
+if (hayGetsVacios()) {
+    // Generamos una URL sin las variables GET vacías para hacerlo más limpio
+    $nueva_url = eliminarVariablesGetVacias();
+    // echo $nueva_url;
+    echo "<script>window.location.href = '$nueva_url';</script>";
+    exit();
+}
+
 // Recoger filtros
 $filtros = [];
 foreach ($_GET as $key => $value) {

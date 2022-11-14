@@ -69,6 +69,9 @@ class Mesa
 
         $sql = $sql.";";
 
+        // echo $sql;
+        // die();
+
         return mysqli_query($conexion, $sql);
     }
 
