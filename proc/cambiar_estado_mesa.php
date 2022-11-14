@@ -82,7 +82,7 @@ $estado_actual = Mesa::getEstadoMesa($conexion, $id_mesa);
             Mesa::cerrarIncidenciaMesa($conexion, $id_mesa);
             Mesa::crearRegistroMesa($conexion, $id_mesa, $comensales);
         } else {
-            //redirect('../controller/index_controller.php?error=true');
+            redirect('../controller/index_controller.php?error=true');
         }
     } else {
         redirect('../controller/index_controller.php?error=true');
