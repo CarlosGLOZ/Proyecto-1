@@ -14,7 +14,7 @@ foreach ($_POST as $key => $value) {
     if ($key == LOGIN_FORM['PASSWORD']) {
         $params[$key] = sha1(trim(strip_tags($value)));
     } else {
-        $params[$key] = trim(strip_tags($value));
+        $params[$key] = mysqli_real_escape_string(trim(strip_tags($value)));
     }
 }
 
